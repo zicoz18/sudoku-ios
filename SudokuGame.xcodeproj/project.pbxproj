@@ -20,6 +20,10 @@
 		B75721CA2768A6E000F78593 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B75721C92768A6E000F78593 /* MenuViewController.swift */; };
 		B75721CD2768A86800F78593 /* UserTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B75721CC2768A86800F78593 /* UserTableViewCell.swift */; };
 		B75721CF2768A87600F78593 /* SudokuCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B75721CE2768A87600F78593 /* SudokuCollectionViewCell.swift */; };
+		FE3E9A47276F7315009DE801 /* DataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE3E9A46276F7315009DE801 /* DataSource.swift */; };
+		FE3E9A49276F73A8009DE801 /* LeaderboardItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE3E9A48276F73A8009DE801 /* LeaderboardItem.swift */; };
+		FE3E9A4B276F752A009DE801 /* DataSourceDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE3E9A4A276F752A009DE801 /* DataSourceDelegate.swift */; };
+		FE3E9A4D276F7F96009DE801 /* Sudoku.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE3E9A4C276F7F96009DE801 /* Sudoku.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +42,10 @@
 		B75721C92768A6E000F78593 /* MenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
 		B75721CC2768A86800F78593 /* UserTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserTableViewCell.swift; sourceTree = "<group>"; };
 		B75721CE2768A87600F78593 /* SudokuCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SudokuCollectionViewCell.swift; sourceTree = "<group>"; };
+		FE3E9A46276F7315009DE801 /* DataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataSource.swift; sourceTree = "<group>"; };
+		FE3E9A48276F73A8009DE801 /* LeaderboardItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaderboardItem.swift; sourceTree = "<group>"; };
+		FE3E9A4A276F752A009DE801 /* DataSourceDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataSourceDelegate.swift; sourceTree = "<group>"; };
+		FE3E9A4C276F7F96009DE801 /* Sudoku.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sudoku.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -70,6 +78,7 @@
 		B75721AB2768A5D300F78593 /* SudokuGame */ = {
 			isa = PBXGroup;
 			children = (
+				FE3E9A45276F72F7009DE801 /* Modal */,
 				B75721CB2768A7FC00F78593 /* Cells */,
 				B75721C02768A62700F78593 /* ViewControllers */,
 				B75721AC2768A5D300F78593 /* AppDelegate.swift */,
@@ -102,6 +111,17 @@
 				B75721CE2768A87600F78593 /* SudokuCollectionViewCell.swift */,
 			);
 			path = Cells;
+			sourceTree = "<group>";
+		};
+		FE3E9A45276F72F7009DE801 /* Modal */ = {
+			isa = PBXGroup;
+			children = (
+				FE3E9A46276F7315009DE801 /* DataSource.swift */,
+				FE3E9A48276F73A8009DE801 /* LeaderboardItem.swift */,
+				FE3E9A4A276F752A009DE801 /* DataSourceDelegate.swift */,
+				FE3E9A4C276F7F96009DE801 /* Sudoku.swift */,
+			);
+			path = Modal;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -179,6 +199,10 @@
 				B75721CD2768A86800F78593 /* UserTableViewCell.swift in Sources */,
 				B75721B12768A5D300F78593 /* ViewController.swift in Sources */,
 				B75721C62768A6BE00F78593 /* SolveSudokuViewController.swift in Sources */,
+				FE3E9A49276F73A8009DE801 /* LeaderboardItem.swift in Sources */,
+				FE3E9A47276F7315009DE801 /* DataSource.swift in Sources */,
+				FE3E9A4D276F7F96009DE801 /* Sudoku.swift in Sources */,
+				FE3E9A4B276F752A009DE801 /* DataSourceDelegate.swift in Sources */,
 				B75721AD2768A5D300F78593 /* AppDelegate.swift in Sources */,
 				B75721C22768A66E00F78593 /* LeaderboardViewController.swift in Sources */,
 				B75721AF2768A5D300F78593 /* SceneDelegate.swift in Sources */,

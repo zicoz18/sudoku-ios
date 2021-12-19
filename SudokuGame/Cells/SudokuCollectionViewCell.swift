@@ -8,5 +8,6 @@
 import UIKit
 
 class SudokuCollectionViewCell: UICollectionViewCell {
+    @IBOutlet weak var difficultyLabel: UILabel!
     
 }
