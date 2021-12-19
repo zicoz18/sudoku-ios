@@ -9,6 +9,8 @@ import UIKit
 
 class SolveSudokuViewController: ViewController {
 
+    var selectedSudokuId: Int?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
