@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		03DA3B7128ABAF6CB00343BC /* Pods_SudokuGame.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FB3269AA6E7815A576D6B060 /* Pods_SudokuGame.framework */; };
+		B7547D3027709619005D489D /* SolveSudokuCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7547D2F27709619005D489D /* SolveSudokuCollectionViewCell.swift */; };
+		B7547D32277096F7005D489D /* SolveSudokuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7547D31277096F7005D489D /* SolveSudokuViewController.swift */; };
+		B7547D362770FA01005D489D /* SolvingNumbersCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7547D352770FA01005D489D /* SolvingNumbersCollectionViewCell.swift */; };
 		B75721AD2768A5D300F78593 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B75721AC2768A5D300F78593 /* AppDelegate.swift */; };
 		B75721AF2768A5D300F78593 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B75721AE2768A5D300F78593 /* SceneDelegate.swift */; };
 		B75721B12768A5D300F78593 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B75721B02768A5D300F78593 /* ViewController.swift */; };
@@ -16,7 +19,6 @@
 		B75721B92768A5D400F78593 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B75721B72768A5D400F78593 /* LaunchScreen.storyboard */; };
 		B75721C22768A66E00F78593 /* LeaderboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B75721C12768A66E00F78593 /* LeaderboardViewController.swift */; };
 		B75721C42768A69C00F78593 /* SudokusViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B75721C32768A69C00F78593 /* SudokusViewController.swift */; };
-		B75721C62768A6BE00F78593 /* SolveSudokuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B75721C52768A6BE00F78593 /* SolveSudokuViewController.swift */; };
 		B75721C82768A6D100F78593 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B75721C72768A6D100F78593 /* LoginViewController.swift */; };
 		B75721CA2768A6E000F78593 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B75721C92768A6E000F78593 /* MenuViewController.swift */; };
 		B75721CD2768A86800F78593 /* UserTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B75721CC2768A86800F78593 /* UserTableViewCell.swift */; };
@@ -30,6 +32,9 @@
 
 /* Begin PBXFileReference section */
 		B555D95658F7B32B1C3B7AE3 /* Pods-SudokuGame.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SudokuGame.release.xcconfig"; path = "Target Support Files/Pods-SudokuGame/Pods-SudokuGame.release.xcconfig"; sourceTree = "<group>"; };
+		B7547D2F27709619005D489D /* SolveSudokuCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SolveSudokuCollectionViewCell.swift; sourceTree = "<group>"; };
+		B7547D31277096F7005D489D /* SolveSudokuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SolveSudokuViewController.swift; sourceTree = "<group>"; };
+		B7547D352770FA01005D489D /* SolvingNumbersCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SolvingNumbersCollectionViewCell.swift; sourceTree = "<group>"; };
 		B75721A92768A5D300F78593 /* SudokuGame.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SudokuGame.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B75721AC2768A5D300F78593 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B75721AE2768A5D300F78593 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -40,7 +45,6 @@
 		B75721BA2768A5D400F78593 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B75721C12768A66E00F78593 /* LeaderboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaderboardViewController.swift; sourceTree = "<group>"; };
 		B75721C32768A69C00F78593 /* SudokusViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SudokusViewController.swift; sourceTree = "<group>"; };
-		B75721C52768A6BE00F78593 /* SolveSudokuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SolveSudokuViewController.swift; sourceTree = "<group>"; };
 		B75721C72768A6D100F78593 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		B75721C92768A6E000F78593 /* MenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
 		B75721CC2768A86800F78593 /* UserTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserTableViewCell.swift; sourceTree = "<group>"; };
@@ -107,9 +111,9 @@
 			children = (
 				B75721C12768A66E00F78593 /* LeaderboardViewController.swift */,
 				B75721C32768A69C00F78593 /* SudokusViewController.swift */,
-				B75721C52768A6BE00F78593 /* SolveSudokuViewController.swift */,
 				B75721C72768A6D100F78593 /* LoginViewController.swift */,
 				B75721C92768A6E000F78593 /* MenuViewController.swift */,
+				B7547D31277096F7005D489D /* SolveSudokuViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -119,6 +123,8 @@
 			children = (
 				B75721CC2768A86800F78593 /* UserTableViewCell.swift */,
 				B75721CE2768A87600F78593 /* SudokuCollectionViewCell.swift */,
+				B7547D2F27709619005D489D /* SolveSudokuCollectionViewCell.swift */,
+				B7547D352770FA01005D489D /* SolvingNumbersCollectionViewCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -270,15 +276,17 @@
 				B75721C82768A6D100F78593 /* LoginViewController.swift in Sources */,
 				B75721CD2768A86800F78593 /* UserTableViewCell.swift in Sources */,
 				B75721B12768A5D300F78593 /* ViewController.swift in Sources */,
-				B75721C62768A6BE00F78593 /* SolveSudokuViewController.swift in Sources */,
 				FE3E9A49276F73A8009DE801 /* LeaderboardItem.swift in Sources */,
 				FE3E9A47276F7315009DE801 /* DataSource.swift in Sources */,
 				FE3E9A4D276F7F96009DE801 /* Sudoku.swift in Sources */,
+				B7547D362770FA01005D489D /* SolvingNumbersCollectionViewCell.swift in Sources */,
 				FE3E9A4B276F752A009DE801 /* DataSourceDelegate.swift in Sources */,
 				B75721AD2768A5D300F78593 /* AppDelegate.swift in Sources */,
 				B75721C22768A66E00F78593 /* LeaderboardViewController.swift in Sources */,
 				B75721AF2768A5D300F78593 /* SceneDelegate.swift in Sources */,
+				B7547D32277096F7005D489D /* SolveSudokuViewController.swift in Sources */,
 				B75721CF2768A87600F78593 /* SudokuCollectionViewCell.swift in Sources */,
+				B7547D3027709619005D489D /* SolveSudokuCollectionViewCell.swift in Sources */,
 				B75721C42768A69C00F78593 /* SudokusViewController.swift in Sources */,
 				B75721CA2768A6E000F78593 /* MenuViewController.swift in Sources */,
 			);
