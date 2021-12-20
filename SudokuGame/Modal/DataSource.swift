@@ -71,5 +71,28 @@ class DataSource {
             dataTask.resume()
         }
     }
+    
+    /*
+    func loadSudoku(id: String) {
+        let urlSession = URLSession.shared
+        if let url = URL(string: "\(baseURL)/sudokus.json") {
+            var urlRequest = URLRequest(url: url)
+            urlRequest.httpMethod = "GET"
+            urlRequest.addValue("application/json", forHTTPHeaderField: "Content-Type")
+            
+            let dataTask = urlSession.dataTask(with: urlRequest) { data, response, error in
+                if let data = data {
+                    let decoder = JSONDecoder()
+                    let sudokuListData = try! decoder.decode([Sudoku].self, from: data)
+                    self.Sudokus = sudokuListData
+                    DispatchQueue.main.async {
+                        self.delegate?.sudokuLoaded()
+                    }
+                }
+            }
+            dataTask.resume()
+        }
+    }
+     */
 
 }

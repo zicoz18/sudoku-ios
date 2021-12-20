@@ -46,8 +46,8 @@ class SudokusViewController: UICollectionViewController {
         let cell = sender as! SudokuCollectionViewCell
         if let indexPath = self.sudokusCollectionView.indexPath(for: cell) {
             let sudoku = dataSource.getSudokuWithIndex(index: indexPath.row)
-            let solveSudokuViewController = segue.destination as! SolveSudokuViewController
-            solveSudokuViewController.selectedSudokuId = sudoku.Id
+            let solveSudokuCollectionViewController = segue.destination as! SolveSudokuCollectionViewController
+            solveSudokuCollectionViewController.selectedSudokuId = sudoku.Id
         }
     }
 }
