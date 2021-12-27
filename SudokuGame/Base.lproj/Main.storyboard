@@ -311,6 +311,7 @@
                                 <connections>
                                     <outlet property="dataSource" destination="u5a-CT-PyC" id="xB0-Bo-ltn"/>
                                     <outlet property="delegate" destination="u5a-CT-PyC" id="KSH-F2-GTx"/>
+                                    <outlet property="dropDelegate" destination="u5a-CT-PyC" id="MuJ-7H-Yff"/>
                                 </connections>
                             </collectionView>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="STd-qV-Tnz">
@@ -354,6 +355,7 @@
                                 <connections>
                                     <outlet property="dataSource" destination="u5a-CT-PyC" id="zXq-Rb-TAL"/>
                                     <outlet property="delegate" destination="u5a-CT-PyC" id="1wO-tV-MYE"/>
+                                    <outlet property="dragDelegate" destination="u5a-CT-PyC" id="j3i-5g-8PF"/>
                                 </connections>
                             </collectionView>
                         </subviews>

@@ -15,108 +15,46 @@ class SolveSudokuViewController: UIViewController {
     var selectedSudokuId: Int?
     let dataSource = DataSource()
     let numberArray = [1, 2, 3, 4, 5, 6, 7, 8, 9]
-     
-    let sudoku = [
-         [
-             0,
-             0,
-             6,
-             8,
-             9,
-             0,
-             5,
-             0,
-             0
-         ],
-         [
-             0,
-             0,
-             0,
-             0,
-             0,
-             7,
-             0,
-             0,
-             9
-         ],
-         [
-             0,
-             0,
-             0,
-             3,
-             0,
-             0,
-             1,
-             2,
-             4
-         ],
-         [
-             0,
-             1,
-             0,
-             4,
-             0,
-             0,
-             0,
-             9,
-             8
-         ],
-         [
-             0,
-             0,
-             0,
-             0,
-             0,
-             9,
-             0,
-             0,
-             0
-         ],
-         [
-             6,
-             9,
-             0,
-             0,
-             2,
-             0,
-             0,
-             0,
-             0
-         ],
-         [
-             0,
-             0,
-             0,
-             0,
-             0,
-             0,
-             9,
-             4,
-             0
-         ],
-         [
-             0,
-             6,
-             4,
-             9,
-             7,
-             0,
-             3,
-             5,
-             1
-         ],
-         [
-             9,
-             7,
-             3,
-             0,
-             1,
-             0,
-             8,
-             0,
-             2
-         ]
-     ]
+    let solvedSudoku = [
+        [
+          1, 9, 2, 3, 5,
+          7, 8, 4, 6
+        ],
+        [
+          5, 3, 4, 1, 6,
+          8, 7, 2, 9
+        ],
+        [
+          6, 7, 8, 2, 4,
+          9, 1, 3, 5
+        ],
+        [
+          4, 1, 3, 6, 7,
+          5, 2, 9, 8
+        ],
+        [
+          2, 5, 6, 8, 9,
+          1, 3, 7, 4
+        ],
+        [
+          7, 8, 9, 4, 2,
+          3, 6, 5, 1
+        ],
+        [
+          3, 2, 1, 5, 8,
+          4, 9, 6, 7
+        ],
+        [
+          8, 4, 7, 9, 3,
+          6, 5, 1, 2
+        ],
+        [
+          9, 6, 5, 7, 1,
+          2, 4, 8, 3
+        ]
+      ]
+    let initialSudoku = [[0,0,0,0,0,0,8,0,0],[0,0,4,0,0,8,0,0,9],[0,7,0,0,0,0,0,0,5],[0,1,0,0,7,5,0,0,8],[0,5,6,0,9,1,3,0,0],[7,8,0,0,0,0,0,0,0],[0,2,0,0,0,0,0,0,0],[0,0,0,9,3,0,0,1,0],[0,0,5,7,0,0,4,0,3]]
+    var workingSudoku = [[0,0,0,0,0,0,8,0,0],[0,0,4,0,0,8,0,0,9],[0,7,0,0,0,0,0,0,5],[0,1,0,0,7,5,0,0,8],[0,5,6,0,9,1,3,0,0],[7,8,0,0,0,0,0,0,0],[0,2,0,0,0,0,0,0,0],[0,0,0,9,3,0,0,1,0],[0,0,5,7,0,0,4,0,3]]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -137,13 +75,31 @@ class SolveSudokuViewController: UIViewController {
         // Pass the selected object to the new view controller.
     }
     */
-
+    
+    func checkSudokuSolving(draggedNumber: Int, droppedIndexPath: IndexPath) {
+        let rowCol = indexPathToRowCol(indexPath: droppedIndexPath)
+        if (workingSudoku[rowCol[0]][rowCol[1]] == 0) {
+            if (solvedSudoku[rowCol[0]][rowCol[1]] == draggedNumber) {
+                workingSudoku[rowCol[0]][rowCol[1]] = draggedNumber
+                let droppedCell = solveSudokuCollectionView.cellForItem(at: droppedIndexPath) as! SolveSudokuCollectionViewCell
+                droppedCell.valueLabel.text = String(draggedNumber)
+            } /*else {
+               // TODO: here we should add some kinf of feedback
+                print("Wrong number")
+            } */
+        }
+    }
 }
+/*
+extension SolveSudokuViewController: UICollectionViewDiffableDataSource<<#SectionIdentifierType: Hashable#>, <#ItemIdentifierType: Hashable#>> {
+    
+}
+ */
 
 extension SolveSudokuViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if (collectionView == self.solveSudokuCollectionView) {
-            return sudoku.capacity * sudoku[0].capacity
+            return initialSudoku.capacity * initialSudoku[0].capacity
         } else {
             return numberArray.capacity
         }
@@ -160,13 +116,12 @@ extension SolveSudokuViewController: UICollectionViewDataSource {
         if (collectionView == self.solveSudokuCollectionView) {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "solveSudokuCell", for: indexPath) as! SolveSudokuCollectionViewCell
             let rowCol = indexPathToRowCol(indexPath: indexPath)
-            let sudokuCellValue = sudoku[rowCol[0]][rowCol[1]]
+            let sudokuCellValue = workingSudoku[rowCol[0]][rowCol[1]]
             if (sudokuCellValue == 0) {
                 cell.valueLabel.text = ""
             } else {
                 cell.valueLabel.text = String(sudokuCellValue)
             }
-            // Configure the cell
             return cell
         } else {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "solvingNumbersCell", for: indexPath) as! SolvingNumbersCollectionViewCell
@@ -202,6 +157,33 @@ extension SolveSudokuViewController: UICollectionViewDelegateFlowLayout {
     }
 }
  
+
+
+extension SolveSudokuViewController: UICollectionViewDragDelegate {
+    func collectionView(_ collectionView: UICollectionView, itemsForBeginning session: UIDragSession, at indexPath: IndexPath) -> [UIDragItem] {
+        let item  = numberArray[indexPath.row]
+        let myItemProvider = NSItemProvider(object: "\(item)" as NSString)
+        let dragItem = UIDragItem(itemProvider: myItemProvider)
+        dragItem.localObject = item
+        return [dragItem]
+    }
+}
+
+extension SolveSudokuViewController: UICollectionViewDropDelegate {
+    func collectionView(_ collectionView: UICollectionView, performDropWith coordinator: UICollectionViewDropCoordinator) {
+        if let indexPath = coordinator.destinationIndexPath {
+            //print("Dropped to the cell at index: \(indexPath.row)")
+            let items = coordinator.items
+            if (items.count == 1) {
+                let item = items.first
+                if let draggedItemValue = item?.dragItem.localObject {
+                    checkSudokuSolving(draggedNumber: draggedItemValue as! Int, droppedIndexPath: indexPath)
+                }
+            }
+        }
+    }
+}
+
 
 extension SolveSudokuViewController: DataSourceDelegate {
     func leaderboardLoaded() {
