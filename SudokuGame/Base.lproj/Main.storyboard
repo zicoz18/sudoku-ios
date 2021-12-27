@@ -80,7 +80,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Iov-l9-2GY" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2881" y="1744"/>
+            <point key="canvasLocation" x="2883" y="1744"/>
         </scene>
         <!--Sudokus-->
         <scene sceneID="rvU-hC-5kQ">
@@ -132,7 +132,7 @@
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="l9k-nW-gVB" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="813" y="1744"/>
+            <point key="canvasLocation" x="1800" y="1744"/>
         </scene>
         <!--Home-->
         <scene sceneID="8bc-Xp-ldG">
@@ -185,7 +185,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xqC-jc-hLc" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1800" y="1744"/>
+            <point key="canvasLocation" x="942" y="1744"/>
         </scene>
         <!--Item-->
         <scene sceneID="Za7-hw-0Mx">
@@ -435,8 +435,8 @@
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="oDb-ET-zjG"/>
-        <segue reference="IJt-j8-PpU"/>
-        <segue reference="1R6-es-1Re"/>
+        <segue reference="xZc-Mi-y2p"/>
+        <segue reference="khA-Yc-Ydx"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="homekit" catalog="system" width="128" height="106"/>
