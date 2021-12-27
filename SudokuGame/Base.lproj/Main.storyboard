@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="9Ov-Zb-X0v">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19455" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="9Ov-Zb-X0v">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
@@ -18,19 +18,19 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
-                        <segue destination="Xqc-en-ka3" kind="relationship" relationship="rootViewController" id="2Sf-pq-4Cm"/>
+                        <segue destination="Xqc-en-ka3" kind="relationship" relationship="rootViewController" id="d8Q-ac-Sbk"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lWm-CW-Ofu" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="45" y="254"/>
+            <point key="canvasLocation" x="748" y="301"/>
         </scene>
-        <!--Leaderboard View Controller-->
+        <!--Leaderboard-->
         <scene sceneID="bUj-oO-Ucu">
             <objects>
                 <tableViewController id="nfa-47-SAE" customClass="LeaderboardViewController" customModule="SudokuGame" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="mxP-m2-Qw9">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <prototypes>
@@ -72,6 +72,7 @@
                             <outlet property="delegate" destination="nfa-47-SAE" id="Mba-rd-PoY"/>
                         </connections>
                     </tableView>
+                    <tabBarItem key="tabBarItem" title="Leaderboard" selectedImage="star.fill" catalog="system" id="dk6-pa-bq6"/>
                     <navigationItem key="navigationItem" id="ZHb-Il-ftn"/>
                     <connections>
                         <outlet property="leaderboardTableView" destination="mxP-m2-Qw9" id="NPW-zN-NY9"/>
@@ -79,14 +80,14 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Iov-l9-2GY" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="803" y="-382"/>
+            <point key="canvasLocation" x="2881" y="1744"/>
         </scene>
-        <!--Sudokus View Controller-->
+        <!--Sudokus-->
         <scene sceneID="rvU-hC-5kQ">
             <objects>
                 <collectionViewController id="ywF-k6-TAo" customClass="SudokusViewController" customModule="SudokuGame" customModuleProvider="target" sceneMemberID="viewController">
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="YxU-Ov-vgN">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="uD6-qD-fpg">
@@ -123,6 +124,7 @@
                             <outlet property="delegate" destination="ywF-k6-TAo" id="kXe-Ou-weG"/>
                         </connections>
                     </collectionView>
+                    <tabBarItem key="tabBarItem" title="Sudokus" id="Cvj-Ek-0LH"/>
                     <navigationItem key="navigationItem" id="kKI-Gx-TaA"/>
                     <connections>
                         <outlet property="sudokusCollectionView" destination="YxU-Ov-vgN" id="n9j-Uw-VPW"/>
@@ -130,14 +132,14 @@
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="l9k-nW-gVB" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1585.5072463768117" y="-382.36607142857139"/>
+            <point key="canvasLocation" x="813" y="1744"/>
         </scene>
-        <!--Menu View Controller-->
+        <!--Home-->
         <scene sceneID="8bc-Xp-ldG">
             <objects>
                 <viewController id="vy4-pW-Sru" customClass="MenuViewController" customModule="SudokuGame" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="q1I-Jf-rvT">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Menu" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hbp-R1-YOc">
@@ -172,25 +174,25 @@
                                 <buttonConfiguration key="configuration" style="gray" title="Sign Out"/>
                                 <connections>
                                     <action selector="signOut:" destination="vy4-pW-Sru" eventType="touchUpInside" id="5lq-Ix-LfD"/>
-                                    <segue destination="Xqc-en-ka3" kind="show" id="29l-0u-5tR"/>
                                 </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="tP3-xx-ibx"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
+                    <tabBarItem key="tabBarItem" title="Home" selectedImage="homekit" catalog="system" id="OE1-TF-Qeg"/>
                     <navigationItem key="navigationItem" id="DZh-5t-a5I"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xqC-jc-hLc" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1624.6376811594205" y="352.90178571428572"/>
+            <point key="canvasLocation" x="1800" y="1744"/>
         </scene>
         <!--Item-->
         <scene sceneID="Za7-hw-0Mx">
             <objects>
                 <viewController id="Xqc-en-ka3" customClass="LoginViewController" customModule="SudokuGame" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="g01-WZ-Kej" customClass="Login">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email Address" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="xxE-M1-7Sp">
@@ -212,7 +214,7 @@
                                 <buttonConfiguration key="configuration" style="plain" title="Sign Up"/>
                                 <connections>
                                     <action selector="signUp:" destination="Xqc-en-ka3" eventType="touchUpInside" id="6j8-Hf-BX6"/>
-                                    <segue destination="vy4-pW-Sru" kind="show" id="oDb-ET-zjG"/>
+                                    <segue destination="Mvm-cY-DPv" kind="show" id="oDb-ET-zjG"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GEU-IB-TjH">
@@ -222,7 +224,7 @@
                                 <buttonConfiguration key="configuration" style="plain" title="Sign In"/>
                                 <connections>
                                     <action selector="signIn:" destination="Xqc-en-ka3" eventType="touchUpInside" id="eWl-Bj-Eqn"/>
-                                    <segue destination="vy4-pW-Sru" kind="show" id="Epj-es-La7"/>
+                                    <segue destination="Mvm-cY-DPv" kind="show" id="Epj-es-La7"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="M4U-q8-a6d">
@@ -247,7 +249,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Pug-T9-oN0" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="802.89855072463774" y="301.33928571428572"/>
+            <point key="canvasLocation" x="1801" y="301"/>
         </scene>
         <!--Solve Sudoku View Controller-->
         <scene sceneID="tKJ-2r-Ujk">
@@ -408,14 +410,37 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0u4-P3-dun" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="802.89855072463774" y="1014.5089285714286"/>
+            <point key="canvasLocation" x="2751" y="301"/>
+        </scene>
+        <!--Tab Bar Controller-->
+        <scene sceneID="Za5-7o-PeU">
+            <objects>
+                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="Mvm-cY-DPv" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" id="uZf-D7-TQO"/>
+                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="jRp-e0-35M">
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="vy4-pW-Sru" kind="relationship" relationship="viewControllers" id="WMb-VL-gIb"/>
+                        <segue destination="nfa-47-SAE" kind="relationship" relationship="viewControllers" id="1R6-es-1Re"/>
+                        <segue destination="ywF-k6-TAo" kind="relationship" relationship="viewControllers" id="IJt-j8-PpU"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="hnT-tW-5w7" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1800" y="1019"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="29l-0u-5tR"/>
-        <segue reference="Epj-es-La7"/>
+        <segue reference="oDb-ET-zjG"/>
+        <segue reference="IJt-j8-PpU"/>
+        <segue reference="1R6-es-1Re"/>
     </inferredMetricsTieBreakers>
     <resources>
+        <image name="homekit" catalog="system" width="128" height="106"/>
+        <image name="star.fill" catalog="system" width="128" height="116"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
