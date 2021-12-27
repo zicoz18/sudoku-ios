@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import FirebaseAuth
 
 class SolveSudokuViewController: UIViewController {
 
@@ -60,8 +61,6 @@ class SolveSudokuViewController: UIViewController {
         super.viewDidLoad()
         self.title = "Solve Sudoku"
         dataSource.delegate = self
-        //self.solveSudokuCollectionView!.register(SolveSudokuCollectionViewCell.self, forCellWithReuseIdentifier: "solveSudokuCell")
-        //self.solvingNumbersCollectionView!.register(SolvingNumbersCollectionViewCell.self, forCellWithReuseIdentifier: "solvingNumbersCell")
         // Do any additional setup after loading the view.
     }
     
@@ -75,26 +74,34 @@ class SolveSudokuViewController: UIViewController {
         // Pass the selected object to the new view controller.
     }
     */
+    func checkIfSudokuSolved() -> Bool {
+        var solved = true
+        for i in 0...8 {
+            for j in 0...8 {
+                if (workingSudoku[i][j] == 0) {
+                    solved = false
+                }
+            }
+        }
+        return solved
+    }
     
     func checkSudokuSolving(draggedNumber: Int, droppedIndexPath: IndexPath) {
+        print(FirebaseAuth.Auth.auth().currentUser?.uid)
         let rowCol = indexPathToRowCol(indexPath: droppedIndexPath)
         if (workingSudoku[rowCol[0]][rowCol[1]] == 0) {
             if (solvedSudoku[rowCol[0]][rowCol[1]] == draggedNumber) {
                 workingSudoku[rowCol[0]][rowCol[1]] = draggedNumber
                 let droppedCell = solveSudokuCollectionView.cellForItem(at: droppedIndexPath) as! SolveSudokuCollectionViewCell
                 droppedCell.valueLabel.text = String(draggedNumber)
-            } /*else {
-               // TODO: here we should add some kinf of feedback
-                print("Wrong number")
-            } */
+                let isSolved = checkIfSudokuSolved()
+                if (isSolved) {
+                    // TODO: Navigate to other screen or write solvingSudoku data to db
+                }
+            }
         }
     }
 }
-/*
-extension SolveSudokuViewController: UICollectionViewDiffableDataSource<<#SectionIdentifierType: Hashable#>, <#ItemIdentifierType: Hashable#>> {
-    
-}
- */
 
 extension SolveSudokuViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
