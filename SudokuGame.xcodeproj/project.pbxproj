@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		03DA3B7128ABAF6CB00343BC /* Pods_SudokuGame.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FB3269AA6E7815A576D6B060 /* Pods_SudokuGame.framework */; };
 		B7547D3027709619005D489D /* SolveSudokuCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7547D2F27709619005D489D /* SolveSudokuCollectionViewCell.swift */; };
 		B7547D32277096F7005D489D /* SolveSudokuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7547D31277096F7005D489D /* SolveSudokuViewController.swift */; };
 		B7547D362770FA01005D489D /* SolvingNumbersCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7547D352770FA01005D489D /* SolvingNumbersCollectionViewCell.swift */; };
@@ -26,9 +27,11 @@
 		FE3E9A49276F73A8009DE801 /* LeaderboardItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE3E9A48276F73A8009DE801 /* LeaderboardItem.swift */; };
 		FE3E9A4B276F752A009DE801 /* DataSourceDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE3E9A4A276F752A009DE801 /* DataSourceDelegate.swift */; };
 		FE3E9A4D276F7F96009DE801 /* Sudoku.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE3E9A4C276F7F96009DE801 /* Sudoku.swift */; };
+		FE420A4F27711C33002C6175 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = FE420A4E27711C33002C6175 /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		B555D95658F7B32B1C3B7AE3 /* Pods-SudokuGame.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SudokuGame.release.xcconfig"; path = "Target Support Files/Pods-SudokuGame/Pods-SudokuGame.release.xcconfig"; sourceTree = "<group>"; };
 		B7547D2F27709619005D489D /* SolveSudokuCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SolveSudokuCollectionViewCell.swift; sourceTree = "<group>"; };
 		B7547D31277096F7005D489D /* SolveSudokuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SolveSudokuViewController.swift; sourceTree = "<group>"; };
 		B7547D352770FA01005D489D /* SolvingNumbersCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SolvingNumbersCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -46,10 +49,13 @@
 		B75721C92768A6E000F78593 /* MenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
 		B75721CC2768A86800F78593 /* UserTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserTableViewCell.swift; sourceTree = "<group>"; };
 		B75721CE2768A87600F78593 /* SudokuCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SudokuCollectionViewCell.swift; sourceTree = "<group>"; };
+		DA76316C9159C16F7F9D878C /* Pods-SudokuGame.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SudokuGame.debug.xcconfig"; path = "Target Support Files/Pods-SudokuGame/Pods-SudokuGame.debug.xcconfig"; sourceTree = "<group>"; };
+		FB3269AA6E7815A576D6B060 /* Pods_SudokuGame.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SudokuGame.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FE3E9A46276F7315009DE801 /* DataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataSource.swift; sourceTree = "<group>"; };
 		FE3E9A48276F73A8009DE801 /* LeaderboardItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaderboardItem.swift; sourceTree = "<group>"; };
 		FE3E9A4A276F752A009DE801 /* DataSourceDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataSourceDelegate.swift; sourceTree = "<group>"; };
 		FE3E9A4C276F7F96009DE801 /* Sudoku.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sudoku.swift; sourceTree = "<group>"; };
+		FE420A4E27711C33002C6175 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,6 +63,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				03DA3B7128ABAF6CB00343BC /* Pods_SudokuGame.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -68,6 +75,8 @@
 			children = (
 				B75721AB2768A5D300F78593 /* SudokuGame */,
 				B75721AA2768A5D300F78593 /* Products */,
+				F2DA6497D0F80EC14D22DCDF /* Pods */,
+				C4E3C76B89D41060BF1AE619 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -88,6 +97,7 @@
 				B75721AC2768A5D300F78593 /* AppDelegate.swift */,
 				B75721AE2768A5D300F78593 /* SceneDelegate.swift */,
 				B75721B02768A5D300F78593 /* ViewController.swift */,
+				FE420A4E27711C33002C6175 /* GoogleService-Info.plist */,
 				B75721B22768A5D300F78593 /* Main.storyboard */,
 				B75721B52768A5D400F78593 /* Assets.xcassets */,
 				B75721B72768A5D400F78593 /* LaunchScreen.storyboard */,
@@ -119,6 +129,23 @@
 			path = Cells;
 			sourceTree = "<group>";
 		};
+		C4E3C76B89D41060BF1AE619 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				FB3269AA6E7815A576D6B060 /* Pods_SudokuGame.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		F2DA6497D0F80EC14D22DCDF /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				DA76316C9159C16F7F9D878C /* Pods-SudokuGame.debug.xcconfig */,
+				B555D95658F7B32B1C3B7AE3 /* Pods-SudokuGame.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 		FE3E9A45276F72F7009DE801 /* Modal */ = {
 			isa = PBXGroup;
 			children = (
@@ -137,9 +164,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = B75721BD2768A5D400F78593 /* Build configuration list for PBXNativeTarget "SudokuGame" */;
 			buildPhases = (
+				BEA452591892171DE35CA8C0 /* [CP] Check Pods Manifest.lock */,
 				B75721A52768A5D300F78593 /* Sources */,
 				B75721A62768A5D300F78593 /* Frameworks */,
 				B75721A72768A5D300F78593 /* Resources */,
+				78652162FDAF54139A14E396 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -189,12 +218,55 @@
 			buildActionMask = 2147483647;
 			files = (
 				B75721B92768A5D400F78593 /* LaunchScreen.storyboard in Resources */,
+				FE420A4F27711C33002C6175 /* GoogleService-Info.plist in Resources */,
 				B75721B62768A5D400F78593 /* Assets.xcassets in Resources */,
 				B75721B42768A5D300F78593 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		78652162FDAF54139A14E396 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-SudokuGame/Pods-SudokuGame-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-SudokuGame/Pods-SudokuGame-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-SudokuGame/Pods-SudokuGame-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		BEA452591892171DE35CA8C0 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-SudokuGame-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		B75721A52768A5D300F78593 /* Sources */ = {
@@ -360,6 +432,7 @@
 		};
 		B75721BE2768A5D400F78593 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = DA76316C9159C16F7F9D878C /* Pods-SudokuGame.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -387,6 +460,7 @@
 		};
 		B75721BF2768A5D400F78593 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B555D95658F7B32B1C3B7AE3 /* Pods-SudokuGame.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
