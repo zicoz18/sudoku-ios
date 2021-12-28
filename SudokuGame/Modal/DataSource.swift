@@ -98,18 +98,8 @@ class DataSource {
             urlRequest.httpBody = jsonData
             let dataTask = urlSession.dataTask(with: urlRequest) { data, response, error in
                 if let data = data {
-                    /*
-                    let decoder = JSONDecoder()
-                    let sudokusData = try! decoder.decode(SudokuList.self, from: data)
-                    var sudokuArray: [Sudoku] = []
-                    for (_, value) in sudokusData.sudokus {
-                        sudokuArray.append(value)
-                    }
-                    self.Sudokus = sudokuArray
-                     */
-                    
                     DispatchQueue.main.async {
-                        self.delegate?.sudokusLoaded()
+                        self.delegate?.userSudokuRelationDataAdded()
                     }
                 }
             }

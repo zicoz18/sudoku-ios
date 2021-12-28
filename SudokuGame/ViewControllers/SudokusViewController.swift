@@ -86,6 +86,8 @@ extension SudokusViewController: DataSourceDelegate {
         filteredSudokus = sudokus
         sudokusCollectionView.reloadData()
     }
+    
+    func userSudokuRelationDataAdded() {}
 }
 
 extension SudokusViewController: UICollectionViewDataSource {
