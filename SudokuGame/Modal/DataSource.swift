@@ -9,7 +9,7 @@ import Foundation
 
 class DataSource {
     private var Leaderboard: [LeaderboardItem] = []
-    private var Sudokus: [Sudoku] = []
+    private var Sudokus: [UpdatedSudoku] = []
     private let baseURL = "https://sudokube-7935b-default-rtdb.europe-west1.firebasedatabase.app/"
     var delegate: DataSourceDelegate?
     
@@ -28,7 +28,7 @@ class DataSource {
         return Sudokus.count
     }
     
-    func getSudokuWithIndex(index: Int) -> Sudoku {
+    func getSudokuWithIndex(index: Int) -> UpdatedSudoku {
         return Sudokus[index]
     }
     
@@ -43,9 +43,8 @@ class DataSource {
                     let decoder = JSONDecoder()
                     let leaderboardData = try! decoder.decode(TrialModel.self, from: data)
                     var leaderboardArray: [LeaderboardItem] = []
-                    for (key, value) in leaderboardData.leaderboards {
+                    for (_, value) in leaderboardData.leaderboards {
                         leaderboardArray.append(value)
-                       print("\(value))")
                     }
                     self.Leaderboard = leaderboardArray
                     DispatchQueue.main.async {
@@ -59,15 +58,20 @@ class DataSource {
     
     func loadSudokus() {
         let urlSession = URLSession.shared
-        if let url = URL(string: "\(baseURL)/sudokus.json") {
+        if let url = URL(string: "\(baseURL)/updated.json") {
             var urlRequest = URLRequest(url: url)
             urlRequest.httpMethod = "GET"
             urlRequest.addValue("application/json", forHTTPHeaderField: "Content-Type")
             let dataTask = urlSession.dataTask(with: urlRequest) { data, response, error in
                 if let data = data {
                     let decoder = JSONDecoder()
-                    let sudokuListData = try! decoder.decode([Sudoku].self, from: data)
-                    self.Sudokus = sudokuListData
+                    let sudokusData = try! decoder.decode(SudokuList.self, from: data)
+                    var sudokuArray: [UpdatedSudoku] = []
+                    for (_, value) in sudokusData.sudokus {
+                        sudokuArray.append(value)
+                       print("\(value))")
+                    }
+                    self.Sudokus = sudokuArray
                     DispatchQueue.main.async {
                         self.delegate?.sudokusLoaded()
                     }
