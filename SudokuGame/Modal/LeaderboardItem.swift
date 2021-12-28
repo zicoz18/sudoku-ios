@@ -11,4 +11,5 @@ struct LeaderboardItem: Decodable {
     let Id: Int
     let Name: String
     let Score: Int
+    let difficulty: String
 }

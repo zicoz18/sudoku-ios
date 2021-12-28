@@ -227,4 +227,8 @@ extension SolveSudokuViewController: DataSourceDelegate {
     func sudokusLoaded() {
     }
     
+    func userSudokuRelationDataAdded() {
+         print("Data added")
+    }
+    
 }

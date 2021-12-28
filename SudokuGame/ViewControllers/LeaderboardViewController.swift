@@ -56,8 +56,8 @@ class LeaderboardViewController: UIViewController {
             leaderboardTableView.reloadData()
             return
         }
-       /* filteredItems = items.filter { item in return item.difficulty == selectedFilter
-        } */
+        filteredItems = items.filter { item in return item.difficulty == selectedFilter
+        }
         leaderboardTableView.reloadData()
     }
 }
@@ -70,6 +70,8 @@ extension LeaderboardViewController: DataSourceDelegate {
     }
     
     func sudokusLoaded() {}
+    
+    func userSudokuRelationDataAdded() {}
 }
 
 extension LeaderboardViewController: UITableViewDataSource {
