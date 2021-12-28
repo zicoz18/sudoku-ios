@@ -179,12 +179,12 @@ extension SolveSudokuViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if (collectionView == self.solveSudokuCollectionView) {
             if let selectedSudokuUnsolved = selectedSudokuUnsolved {
-                return selectedSudokuUnsolved.capacity * selectedSudokuUnsolved[0].capacity
+                return selectedSudokuUnsolved.count * selectedSudokuUnsolved[0].count
             } else {
                 return 0
             }
         } else {
-            return numberArray.capacity
+            return numberArray.count
         }
     }
     
@@ -197,10 +197,23 @@ extension SolveSudokuViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if (collectionView == self.solveSudokuCollectionView) {
+            /*
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "solveSudokuCell", for: indexPath) as! SolveSudokuCollectionViewCell
+            let rowCol = indexPathToRowCol(indexPath: indexPath)
+            let sudokuCellValue = workingSudoku?[rowCol[0]][rowCol[1]]
+            if (sudokuCellValue == 0) {
+                cell.valueLabel.text = ""
+            } else {
+                cell.valueLabel.text = String(sudokuCellValue)
+            }
+            return cell
+            
+            */
+            
+            
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "solveSudokuCell", for: indexPath) as! SolveSudokuCollectionViewCell
             let rowCol = indexPathToRowCol(indexPath: indexPath)
             if let workingSudoku = workingSudoku {
-                print(rowCol[0], rowCol[1])
                 if(rowCol[0] <= 8 && rowCol[1] <= 8) {
                     let sudokuCellValue = workingSudoku[rowCol[0]][rowCol[1]]
                     if (sudokuCellValue == 0) {
@@ -211,6 +224,8 @@ extension SolveSudokuViewController: UICollectionViewDataSource {
                 }
             }
             return cell
+             
+             
         } else {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "solvingNumbersCell", for: indexPath) as! SolvingNumbersCollectionViewCell
             let index = indexPath.row
