@@ -34,15 +34,20 @@ class DataSource {
     
     func loadLeaderboard() {
         let urlSession = URLSession.shared
-        if let url = URL(string: "\(baseURL)/leaderboard") {
+        if let url = URL(string: "\(baseURL)/updatedLeaderboard.json") {
             var urlRequest = URLRequest(url: url)
             urlRequest.httpMethod = "GET"
             urlRequest.addValue("application/json", forHTTPHeaderField: "Content-Type")
             let dataTask = urlSession.dataTask(with: urlRequest) { data, response, error in
                 if let data = data {
                     let decoder = JSONDecoder()
-                    let leaderboardData = try! decoder.decode([LeaderboardItem].self, from: data)
-                    self.Leaderboard = leaderboardData
+                    let leaderboardData = try! decoder.decode(TrialModel.self, from: data)
+                    var leaderboardArray: [LeaderboardItem] = []
+                    for (key, value) in leaderboardData.leaderboards {
+                        leaderboardArray.append(value)
+                       print("\(value))")
+                    }
+                    self.Leaderboard = leaderboardArray
                     DispatchQueue.main.async {
                         self.delegate?.leaderboardLoaded()
                     }
