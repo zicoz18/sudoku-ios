@@ -9,7 +9,7 @@ import Foundation
 
 class DataSource {
     private var Leaderboard: [LeaderboardItem] = []
-    private var Sudokus: [UpdatedSudoku] = []
+    private var Sudokus: [Sudoku] = []
     private let baseURL = "https://sudokube-7935b-default-rtdb.europe-west1.firebasedatabase.app/"
     var delegate: DataSourceDelegate?
     
@@ -28,7 +28,7 @@ class DataSource {
         return Sudokus.count
     }
     
-    func getSudokuWithIndex(index: Int) -> UpdatedSudoku {
+    func getSudokuWithIndex(index: Int) -> Sudoku {
         return Sudokus[index]
     }
     
@@ -41,7 +41,7 @@ class DataSource {
             let dataTask = urlSession.dataTask(with: urlRequest) { data, response, error in
                 if let data = data {
                     let decoder = JSONDecoder()
-                    let leaderboardData = try! decoder.decode(TrialModel.self, from: data)
+                    let leaderboardData = try! decoder.decode(LeaderboardData.self, from: data)
                     var leaderboardArray: [LeaderboardItem] = []
                     for (_, value) in leaderboardData.leaderboards {
                         leaderboardArray.append(value)
@@ -66,10 +66,9 @@ class DataSource {
                 if let data = data {
                     let decoder = JSONDecoder()
                     let sudokusData = try! decoder.decode(SudokuList.self, from: data)
-                    var sudokuArray: [UpdatedSudoku] = []
+                    var sudokuArray: [Sudoku] = []
                     for (_, value) in sudokusData.sudokus {
                         sudokuArray.append(value)
-                       print("\(value))")
                     }
                     self.Sudokus = sudokuArray
                     DispatchQueue.main.async {

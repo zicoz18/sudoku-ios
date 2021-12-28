@@ -8,7 +8,7 @@
 import Foundation
 
 struct SolvedSudoku: Decodable {
-    let sudoku: UpdatedSudoku
+    let sudoku: Sudoku
     let time: Int
     let userMail: String
 }

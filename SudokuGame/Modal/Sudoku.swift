@@ -1,14 +1,14 @@
 //
-//  Sudoku.swift
+//  UpdatedSudoku.swift
 //  SudokuGame
 //
-//  Created by Tolgay Dulger on 19.12.2021.
+//  Created by Ziya Icoz on 27.12.2021.
 //
 
 import Foundation
 
 struct Sudoku: Decodable {
-    let Id: Int
     let difficulty: String
-    let Table: [[Int]]
+    let solved: [[Int]]
+    let unsolved: [[Int]]
 }
