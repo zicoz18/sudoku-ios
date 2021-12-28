@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct LeaderboardItem: Decodable {
+struct LeaderboardItem: Decodable, Encodable {
     let Id: Int
     let Name: String
     let Score: Int

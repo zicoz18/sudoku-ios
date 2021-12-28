@@ -11,4 +11,5 @@ protocol DataSourceDelegate {
     func leaderboardLoaded()
     func sudokusLoaded()
     func userSudokuRelationDataAdded()
+    func leaderboardItemDataAdded()
 }

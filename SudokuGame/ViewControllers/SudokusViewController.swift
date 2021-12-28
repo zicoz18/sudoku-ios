@@ -33,6 +33,7 @@ class SudokusViewController: UIViewController {
             let sudoku = dataSource.getSudokuWithIndex(index: indexPath.row)
             let solveSudokuViewController = segue.destination as! SolveSudokuViewController
             solveSudokuViewController.sudokuId = sudoku.id
+            solveSudokuViewController.sudokuDifficulty = sudoku.difficulty
             solveSudokuViewController.selectedSudokuUnsolved = sudoku.unsolved
             solveSudokuViewController.workingSudoku = sudoku.unsolved
             solveSudokuViewController.selectedSudokuSolved = sudoku.solved
@@ -88,6 +89,8 @@ extension SudokusViewController: DataSourceDelegate {
     }
     
     func userSudokuRelationDataAdded() {}
+    
+    func leaderboardItemDataAdded() {}
 }
 
 extension SudokusViewController: UICollectionViewDataSource {
