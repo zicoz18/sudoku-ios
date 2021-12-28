@@ -31,6 +31,7 @@
 		FE3E9A4B276F752A009DE801 /* DataSourceDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE3E9A4A276F752A009DE801 /* DataSourceDelegate.swift */; };
 		FE3E9A4D276F7F96009DE801 /* Sudoku.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE3E9A4C276F7F96009DE801 /* Sudoku.swift */; };
 		FE420A4F27711C33002C6175 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = FE420A4E27711C33002C6175 /* GoogleService-Info.plist */; };
+		FE420A51277B1FFE002C6175 /* SudokuList.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE420A50277B1FFE002C6175 /* SudokuList.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -62,6 +63,7 @@
 		FE3E9A4A276F752A009DE801 /* DataSourceDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataSourceDelegate.swift; sourceTree = "<group>"; };
 		FE3E9A4C276F7F96009DE801 /* Sudoku.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sudoku.swift; sourceTree = "<group>"; };
 		FE420A4E27711C33002C6175 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		FE420A50277B1FFE002C6175 /* SudokuList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SudokuList.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -162,6 +164,7 @@
 				B7085CA9277A37BC0024466E /* SolvedSudoku.swift */,
 				B7085CAB277A37E00024466E /* UpdatedSudoku.swift */,
 				B7085CAF277B0C060024466E /* TrialModel.swift */,
+				FE420A50277B1FFE002C6175 /* SudokuList.swift */,
 			);
 			path = Modal;
 			sourceTree = "<group>";
@@ -296,6 +299,7 @@
 				B75721C22768A66E00F78593 /* LeaderboardViewController.swift in Sources */,
 				B75721AF2768A5D300F78593 /* SceneDelegate.swift in Sources */,
 				B7085CAC277A37E00024466E /* UpdatedSudoku.swift in Sources */,
+				FE420A51277B1FFE002C6175 /* SudokuList.swift in Sources */,
 				B7547D32277096F7005D489D /* SolveSudokuViewController.swift in Sources */,
 				B75721CF2768A87600F78593 /* SudokuCollectionViewCell.swift in Sources */,
 				B7547D3027709619005D489D /* SolveSudokuCollectionViewCell.swift in Sources */,

@@ -23,49 +23,13 @@ class SolveSudokuViewController: UIViewController {
     // for testing
     var solvedSudokuList: [SolvedSudoku] = []
 
-    var selectedSudokuId: Int?
+    var selectedSudokuUnsolved: [[Int]]?
+    var selectedSudokuSolved: [[Int]]?
+    var workingSudoku: [[Int]]?
     let dataSource = DataSource()
     let numberArray = [1, 2, 3, 4, 5, 6, 7, 8, 9]
-    let solvedSudoku = [
-        [
-          1, 9, 2, 3, 5,
-          7, 8, 4, 6
-        ],
-        [
-          5, 3, 4, 1, 6,
-          8, 7, 2, 9
-        ],
-        [
-          6, 7, 8, 2, 4,
-          9, 1, 3, 5
-        ],
-        [
-          4, 1, 3, 6, 7,
-          5, 2, 9, 8
-        ],
-        [
-          2, 5, 6, 8, 9,
-          1, 3, 7, 4
-        ],
-        [
-          7, 8, 9, 4, 2,
-          3, 6, 5, 1
-        ],
-        [
-          3, 2, 1, 5, 8,
-          4, 9, 6, 7
-        ],
-        [
-          8, 4, 7, 9, 3,
-          6, 5, 1, 2
-        ],
-        [
-          9, 6, 5, 7, 1,
-          2, 4, 8, 3
-        ]
-      ]
-    let initialSudoku = [[0,0,0,0,0,0,8,0,0],[0,0,4,0,0,8,0,0,9],[0,7,0,0,0,0,0,0,5],[0,1,0,0,7,5,0,0,8],[0,5,6,0,9,1,3,0,0],[7,8,0,0,0,0,0,0,0],[0,2,0,0,0,0,0,0,0],[0,0,0,9,3,0,0,1,0],[0,0,5,7,0,0,4,0,3]]
-    var workingSudoku = [[0,0,0,0,0,0,8,0,0],[0,0,4,0,0,8,0,0,9],[0,7,0,0,0,0,0,0,5],[0,1,0,0,7,5,0,0,8],[0,5,6,0,9,1,3,0,0],[7,8,0,0,0,0,0,0,0],[0,2,0,0,0,0,0,0,0],[0,0,0,9,3,0,0,1,0],[0,0,5,7,0,0,4,0,3]]
+    
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -75,7 +39,6 @@ class SolveSudokuViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     
-
     /*
     // MARK: - Navigation
 
@@ -107,7 +70,7 @@ class SolveSudokuViewController: UIViewController {
         var solved = true
         for i in 0...8 {
             for j in 0...8 {
-                if (workingSudoku[i][j] == 0) {
+                if (workingSudoku![i][j] == 0) {
                     solved = false
                 }
             }
@@ -130,20 +93,20 @@ class SolveSudokuViewController: UIViewController {
                     
                     let updatedSudokuInstance = UpdatedSudoku(difficulty: updatedSudokuDif as! String, solved: updatedSudokuSolved as! [[Int]] , unsolved: updatedSudokuUnsolved as! [[Int]])
                 
-                    let solvedSudoku = SolvedSudoku(sudoku: updatedSudokuInstance as! UpdatedSudoku, time: relatedSudokuTime as! Int, userMail: relatedSudokuEmail as! String)
+                    let selectedSudokuSolved = SolvedSudoku(sudoku: updatedSudokuInstance as! UpdatedSudoku, time: relatedSudokuTime as! Int, userMail: relatedSudokuEmail as! String)
                     
-                    // print("RelatedSudoku: \(solvedSudoku)")
-                    self.solvedSudokuList.append(solvedSudoku)
+                    // print("RelatedSudoku: \(selectedSudokuSolved)")
+                    self.solvedSudokuList.append(selectedSudokuSolved)
                 }
                 self.solvedSudokuList.forEach {
-                    solvedSudoku in
-                    print("Diff: \(solvedSudoku.sudoku.difficulty)")
+                    selectedSudokuSolved in
+                    print("Diff: \(selectedSudokuSolved.sudoku.difficulty)")
                 }
             }
         })
         
         
-        let currentSudoku = UpdatedSudoku(difficulty: "hard", solved: solvedSudoku, unsolved: initialSudoku)
+        let currentSudoku = UpdatedSudoku(difficulty: "hard", solved: selectedSudokuSolved!, unsolved: selectedSudokuUnsolved!)
         let toAddData = SolvedSudoku(sudoku: currentSudoku, time: 30, userMail: userEmail)
         let sudokuObject: [String: Any] = [
             "solved": toAddData.sudoku.solved,
@@ -163,7 +126,7 @@ class SolveSudokuViewController: UIViewController {
         
         /*
         let randomThing3Ref = dbRef.child("randomThing3").childByAutoId()
-        let currentSudoku = UpdatedSudoku(difficulty: "hard", solved: solvedSudoku, unsolved: initialSudoku)
+        let currentSudoku = UpdatedSudoku(difficulty: "hard", solved: selectedSudokuSolved, unsolved: selectedSudokuUnsolved)
          let toAddData = SolvedSudoku(sudoku: currentSudoku, time: 30, userMail: userEmail)
          let sudokuObject: [String: Any] = [
              "solved": toAddData.sudoku.solved,
@@ -190,19 +153,23 @@ class SolveSudokuViewController: UIViewController {
     func checkSudokuSolving(draggedNumber: Int, droppedIndexPath: IndexPath) {
         print(FirebaseAuth.Auth.auth().currentUser?.email)
         let rowCol = indexPathToRowCol(indexPath: droppedIndexPath)
-        if (workingSudoku[rowCol[0]][rowCol[1]] == 0) {
-            if (solvedSudoku[rowCol[0]][rowCol[1]] == draggedNumber) {
-                workingSudoku[rowCol[0]][rowCol[1]] = draggedNumber
-                let droppedCell = solveSudokuCollectionView.cellForItem(at: droppedIndexPath) as! SolveSudokuCollectionViewCell
-                droppedCell.valueLabel.text = String(draggedNumber)
-                //let isSolved = checkIfSudokuSolved()
-                //if (isSolved) {
-                    if let userEmail = FirebaseAuth.Auth.auth().currentUser?.email {
-                        print("Gets here")
-                        writeUserRelatedSolvedSudokuToDB(userEmail: userEmail)
-                        // TODO: Navigate to other screen or write solvingSudoku data to db
+        if var workingSudoku = workingSudoku {
+            if (workingSudoku[rowCol[0]][rowCol[1]] == 0) {
+                if let selectedSudokuSolved = selectedSudokuSolved {
+                    if (selectedSudokuSolved[rowCol[0]][rowCol[1]] == draggedNumber) {
+                        workingSudoku[rowCol[0]][rowCol[1]] = draggedNumber
+                        let droppedCell = solveSudokuCollectionView.cellForItem(at: droppedIndexPath) as! SolveSudokuCollectionViewCell
+                        droppedCell.valueLabel.text = String(draggedNumber)
+                        //let isSolved = checkIfSudokuSolved()
+                        //if (isSolved) {
+                            if let userEmail = FirebaseAuth.Auth.auth().currentUser?.email {
+                                print("Gets here")
+                                writeUserRelatedSolvedSudokuToDB(userEmail: userEmail)
+                                // TODO: Navigate to other screen or write solvingSudoku data to db
+                            }
+                        //}
                     }
-                //}
+                }
             }
         }
     }
@@ -211,7 +178,11 @@ class SolveSudokuViewController: UIViewController {
 extension SolveSudokuViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if (collectionView == self.solveSudokuCollectionView) {
-            return initialSudoku.capacity * initialSudoku[0].capacity
+            if let selectedSudokuUnsolved = selectedSudokuUnsolved {
+                return selectedSudokuUnsolved.capacity * selectedSudokuUnsolved[0].capacity
+            } else {
+                return 0
+            }
         } else {
             return numberArray.capacity
         }
@@ -228,11 +199,16 @@ extension SolveSudokuViewController: UICollectionViewDataSource {
         if (collectionView == self.solveSudokuCollectionView) {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "solveSudokuCell", for: indexPath) as! SolveSudokuCollectionViewCell
             let rowCol = indexPathToRowCol(indexPath: indexPath)
-            let sudokuCellValue = workingSudoku[rowCol[0]][rowCol[1]]
-            if (sudokuCellValue == 0) {
-                cell.valueLabel.text = ""
-            } else {
-                cell.valueLabel.text = String(sudokuCellValue)
+            if let workingSudoku = workingSudoku {
+                print(rowCol[0], rowCol[1])
+                if(rowCol[0] <= 8 && rowCol[1] <= 8) {
+                    let sudokuCellValue = workingSudoku[rowCol[0]][rowCol[1]]
+                    if (sudokuCellValue == 0) {
+                        cell.valueLabel.text = ""
+                    } else {
+                        cell.valueLabel.text = String(sudokuCellValue)
+                    }
+                }
             }
             return cell
         } else {

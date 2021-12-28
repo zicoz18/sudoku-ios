@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="9Ov-Zb-X0v">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19455" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="9Ov-Zb-X0v">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
@@ -104,18 +104,23 @@
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="401"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="difficulty" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6zc-ua-bvg">
-                                            <rect key="frame" x="187" y="48" width="66" height="21"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="DIFFICULTY" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6zc-ua-bvg">
+                                            <rect key="frame" x="161" y="190" width="92" height="21"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
+                                    <color key="backgroundColor" red="1" green="0.43631907739999998" blue="0.25718915939999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                    <constraints>
+                                        <constraint firstItem="6zc-ua-bvg" firstAttribute="centerX" secondItem="oBa-hJ-TRg" secondAttribute="centerX" id="3Fg-we-v0K"/>
+                                        <constraint firstItem="6zc-ua-bvg" firstAttribute="centerY" secondItem="oBa-hJ-TRg" secondAttribute="centerY" id="3hR-2f-3Dt"/>
+                                    </constraints>
                                 </collectionViewCellContentView>
                                 <size key="customSize" width="414" height="401"/>
                                 <connections>
                                     <outlet property="difficultyLabel" destination="6zc-ua-bvg" id="BJT-jf-8eH"/>
+                                    <segue destination="u5a-CT-PyC" kind="show" id="KIp-Fd-DVI"/>
                                 </connections>
                             </collectionViewCell>
                         </cells>
@@ -132,7 +137,7 @@
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="l9k-nW-gVB" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1800" y="1744"/>
+            <point key="canvasLocation" x="1800.0000000000002" y="1743.75"/>
         </scene>
         <!--Home-->
         <scene sceneID="8bc-Xp-ldG">
@@ -227,15 +232,6 @@
                                     <segue destination="Mvm-cY-DPv" kind="show" id="Epj-es-La7"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="M4U-q8-a6d">
-                                <rect key="frame" x="117" y="414" width="182" height="31"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="solveSudoku test button"/>
-                                <connections>
-                                    <segue destination="u5a-CT-PyC" kind="show" id="OsU-Gu-e6z"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="nCQ-fq-PSu"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -249,7 +245,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Pug-T9-oN0" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1801" y="301"/>
+            <point key="canvasLocation" x="1800.0000000000002" y="300.66964285714283"/>
         </scene>
         <!--Solve Sudoku View Controller-->
         <scene sceneID="tKJ-2r-Ujk">
@@ -412,7 +408,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0u4-P3-dun" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2750.7246376811595" y="300.66964285714283"/>
+            <point key="canvasLocation" x="1800" y="2508"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="Za5-7o-PeU">
@@ -439,7 +435,7 @@
     <inferredMetricsTieBreakers>
         <segue reference="oDb-ET-zjG"/>
         <segue reference="xZc-Mi-y2p"/>
-        <segue reference="khA-Yc-Ydx"/>
+        <segue reference="1R6-es-1Re"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="homekit" catalog="system" width="128" height="106"/>
