@@ -22,6 +22,7 @@ class SolveSudokuViewController: UIViewController {
     var solvedSudokuList: [SolvedSudoku] = []
 
     var sudokuId: Int?
+    var sudokuDifficulty: String?
     var selectedSudokuUnsolved: [[Int]]?
     var selectedSudokuSolved: [[Int]]?
     var workingSudoku: [[Int]]?
@@ -84,6 +85,15 @@ class SolveSudokuViewController: UIViewController {
         }
     }
     
+    func addLeaderboardData() {
+        if let userEmail = FirebaseAuth.Auth.auth().currentUser?.email {
+            if let diff  = self.sudokuDifficulty {
+                let leaderboardItem = LeaderboardItem(Id: 1, Name: userEmail, Score: self.seconds, difficulty: diff)
+                dataSource.postLeaderboardData(leaderboardItemData: leaderboardItem)
+            }
+        }
+    }
+    
     func checkSudokuSolving(draggedNumber: Int, droppedIndexPath: IndexPath) {
         print(FirebaseAuth.Auth.auth().currentUser?.email)
         let rowCol = indexPathToRowCol(indexPath: droppedIndexPath)
@@ -95,13 +105,14 @@ class SolveSudokuViewController: UIViewController {
                         let droppedCell = solveSudokuCollectionView.cellForItem(at: droppedIndexPath) as! SolveSudokuCollectionViewCell
                         droppedCell.valueLabel.text = String(draggedNumber)
                         let isSolved = checkIfSudokuSolved()
-                        if (isSolved) {
+                        //if (isSolved) {
                             if let userEmail = FirebaseAuth.Auth.auth().currentUser?.email {
                                 print("Gets here, adds the user-sudoku-relation data to DB.")
                                 addUserSudokuRelationData()
+                                addLeaderboardData()
                                 // TODO: Navigate to other screen or write solvingSudoku data to db
                             }
-                        }
+                        //}
                     }
                 }
             }
@@ -131,20 +142,6 @@ extension SolveSudokuViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if (collectionView == self.solveSudokuCollectionView) {
-            /*
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "solveSudokuCell", for: indexPath) as! SolveSudokuCollectionViewCell
-            let rowCol = indexPathToRowCol(indexPath: indexPath)
-            let sudokuCellValue = workingSudoku?[rowCol[0]][rowCol[1]]
-            if (sudokuCellValue == 0) {
-                cell.valueLabel.text = ""
-            } else {
-                cell.valueLabel.text = String(sudokuCellValue)
-            }
-            return cell
-            
-            */
-            
-            
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "solveSudokuCell", for: indexPath) as! SolveSudokuCollectionViewCell
             let rowCol = indexPathToRowCol(indexPath: indexPath)
             if let workingSudoku = workingSudoku {
@@ -156,8 +153,6 @@ extension SolveSudokuViewController: UICollectionViewDataSource {
                     }
             }
             return cell
-             
-             
         } else {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "solvingNumbersCell", for: indexPath) as! SolvingNumbersCollectionViewCell
             let index = indexPath.row
@@ -207,7 +202,6 @@ extension SolveSudokuViewController: UICollectionViewDragDelegate {
 extension SolveSudokuViewController: UICollectionViewDropDelegate {
     func collectionView(_ collectionView: UICollectionView, performDropWith coordinator: UICollectionViewDropCoordinator) {
         if let indexPath = coordinator.destinationIndexPath {
-            //print("Dropped to the cell at index: \(indexPath.row)")
             let items = coordinator.items
             if (items.count == 1) {
                 let item = items.first
@@ -228,7 +222,10 @@ extension SolveSudokuViewController: DataSourceDelegate {
     }
     
     func userSudokuRelationDataAdded() {
-         print("Data added")
+         print("Relation data added")
     }
     
+    func leaderboardItemDataAdded() {
+        print("Leaderboard data added")
+    }
 }

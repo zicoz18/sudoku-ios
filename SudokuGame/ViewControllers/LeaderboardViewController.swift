@@ -72,6 +72,8 @@ extension LeaderboardViewController: DataSourceDelegate {
     func sudokusLoaded() {}
     
     func userSudokuRelationDataAdded() {}
+    
+    func leaderboardItemDataAdded() {}
 }
 
 extension LeaderboardViewController: UITableViewDataSource {

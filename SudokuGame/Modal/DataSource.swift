@@ -106,5 +106,24 @@ class DataSource {
             dataTask.resume()
         }
     }
+    
+    func postLeaderboardData(leaderboardItemData: LeaderboardItem) {
+        let urlSession = URLSession.shared
+        if let url = URL(string: "\(baseURL)/updatedLeaderboard/leaderboards.json") {
+            var urlRequest = URLRequest(url: url)
+            urlRequest.httpMethod = "POST"
+            urlRequest.addValue("application/json", forHTTPHeaderField: "Content-Type")
+            let jsonData = try! JSONEncoder().encode(leaderboardItemData)
+            urlRequest.httpBody = jsonData
+            let dataTask = urlSession.dataTask(with: urlRequest) { data, response, error in
+                if let data = data {
+                    DispatchQueue.main.async {
+                        self.delegate?.leaderboardItemDataAdded()
+                    }
+                }
+            }
+            dataTask.resume()
+        }
+    }
 
 }
