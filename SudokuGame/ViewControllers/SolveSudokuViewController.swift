@@ -7,14 +7,12 @@
 
 import UIKit
 import FirebaseAuth
-import FirebaseDatabase
 
 class SolveSudokuViewController: UIViewController {
 
     @IBOutlet weak var solveSudokuCollectionView: UICollectionView!
     @IBOutlet weak var solvingNumbersCollectionView: UICollectionView!
     
-    var dbRef: DatabaseReference! = Database.database().reference()
     
     // Timer
     var seconds = 0
@@ -23,6 +21,7 @@ class SolveSudokuViewController: UIViewController {
     // for testing
     var solvedSudokuList: [SolvedSudoku] = []
 
+    var sudokuId: Int?
     var selectedSudokuUnsolved: [[Int]]?
     var selectedSudokuSolved: [[Int]]?
     var workingSudoku: [[Int]]?
@@ -78,76 +77,11 @@ class SolveSudokuViewController: UIViewController {
         return solved
     }
     
-    func writeUserRelatedSolvedSudokuToDB(userEmail: String) {
-        dbRef.child("userRelatedSudokus").observe(DataEventType.value, with: { (snapshot) in
-            if (snapshot.childrenCount > 0 ) {
-                for relatedSudoku in snapshot.children.allObjects as! [DataSnapshot] {
-                    let relatedSudokuObject = relatedSudoku.value as? [String: AnyObject]
-                    let relatedSudokuTime = relatedSudokuObject?["time"]
-                    let relatedSudokuEmail = relatedSudokuObject?["userMail"]
-                    let relatedSudokuSudoku = relatedSudokuObject?["sudoku"]
-                    
-                    let updatedSudokuDif = relatedSudokuSudoku?["difficulty"]
-                    let updatedSudokuSolved = relatedSudokuSudoku?["solved"]
-                    let updatedSudokuUnsolved = relatedSudokuSudoku?["unsolved"]
-                    
-                    let updatedSudokuInstance = Sudoku(difficulty: updatedSudokuDif as! String, solved: updatedSudokuSolved as! [[Int]] , unsolved: updatedSudokuUnsolved as! [[Int]])
-                
-                    let selectedSudokuSolved = SolvedSudoku(sudoku: updatedSudokuInstance as! Sudoku, time: relatedSudokuTime as! Int, userMail: relatedSudokuEmail as! String)
-                    
-                    // print("RelatedSudoku: \(selectedSudokuSolved)")
-                    self.solvedSudokuList.append(selectedSudokuSolved)
-                }
-                self.solvedSudokuList.forEach {
-                    selectedSudokuSolved in
-                    print("Diff: \(selectedSudokuSolved.sudoku.difficulty)")
-                }
-            }
-        })
-        
-        
-        let currentSudoku = Sudoku(difficulty: "hard", solved: selectedSudokuSolved!, unsolved: selectedSudokuUnsolved!)
-        let toAddData = SolvedSudoku(sudoku: currentSudoku, time: 30, userMail: userEmail)
-        let sudokuObject: [String: Any] = [
-            "solved": toAddData.sudoku.solved,
-            "unsolved": toAddData.sudoku.unsolved,
-            "difficulty": toAddData.sudoku.difficulty
-        ]
-        let key = dbRef.child("userRelatedSudokus").childByAutoId().key
-        let object: [String: Any] = [
-            "userMail": toAddData.userMail as NSString,
-            // "sudoku": toAddData.sudoku.solved as NSArray,
-            "sudoku": sudokuObject,
-            "time": toAddData.time as NSNumber,
-            "id": key
-        ]
-        let userRelatedSudoku = object
-        dbRef.child("userRelatedSudokus").child(key!).setValue(object)
-        
-        /*
-        let randomThing3Ref = dbRef.child("randomThing3").childByAutoId()
-        let currentSudoku = UpdatedSudoku(difficulty: "hard", solved: selectedSudokuSolved, unsolved: selectedSudokuUnsolved)
-         let toAddData = SolvedSudoku(sudoku: currentSudoku, time: 30, userMail: userEmail)
-         let sudokuObject: [String: Any] = [
-             "solved": toAddData.sudoku.solved,
-             "unsolved": toAddData.sudoku.unsolved,
-             "difficulty": toAddData.sudoku.difficulty
-         ]
-         let object: [String: Any] = [
-             "userMail": toAddData.userMail as NSString,
-             // "sudoku": toAddData.sudoku.solved as NSArray,
-             "sudoku": sudokuObject,
-             "time": toAddData.time as NSNumber
-         ]
-        randomThing3Ref.setValue(object, withCompletionBlock: { error, ref in
-            if (error == nil) {
-                self.dismiss(animated: true, completion: nil)
-            } else {
-              // handle error
-            }
-        })
-         */
-        
+    func addUserSudokuRelationData() {
+        if let userEmail = FirebaseAuth.Auth.auth().currentUser?.email {
+            let userSudokuRelationData = UserSudokuRelation(solvedSudokuId: self.sudokuId!, time: self.seconds, userEmail: userEmail)
+            dataSource.postUserSudokuRelationData(relationData: userSudokuRelationData)
+        }
     }
     
     func checkSudokuSolving(draggedNumber: Int, droppedIndexPath: IndexPath) {
@@ -160,14 +94,14 @@ class SolveSudokuViewController: UIViewController {
                         workingSudoku[rowCol[0]][rowCol[1]] = draggedNumber
                         let droppedCell = solveSudokuCollectionView.cellForItem(at: droppedIndexPath) as! SolveSudokuCollectionViewCell
                         droppedCell.valueLabel.text = String(draggedNumber)
-                        //let isSolved = checkIfSudokuSolved()
-                        //if (isSolved) {
+                        let isSolved = checkIfSudokuSolved()
+                        if (isSolved) {
                             if let userEmail = FirebaseAuth.Auth.auth().currentUser?.email {
-                                print("Gets here")
-                                writeUserRelatedSolvedSudokuToDB(userEmail: userEmail)
+                                print("Gets here, adds the user-sudoku-relation data to DB.")
+                                addUserSudokuRelationData()
                                 // TODO: Navigate to other screen or write solvingSudoku data to db
                             }
-                        //}
+                        }
                     }
                 }
             }
@@ -214,14 +148,12 @@ extension SolveSudokuViewController: UICollectionViewDataSource {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "solveSudokuCell", for: indexPath) as! SolveSudokuCollectionViewCell
             let rowCol = indexPathToRowCol(indexPath: indexPath)
             if let workingSudoku = workingSudoku {
-                if(rowCol[0] <= 8 && rowCol[1] <= 8) {
                     let sudokuCellValue = workingSudoku[rowCol[0]][rowCol[1]]
                     if (sudokuCellValue == 0) {
                         cell.valueLabel.text = ""
                     } else {
                         cell.valueLabel.text = String(sudokuCellValue)
                     }
-                }
             }
             return cell
              

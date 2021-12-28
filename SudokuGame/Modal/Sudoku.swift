@@ -9,6 +9,7 @@ import Foundation
 
 struct Sudoku: Decodable {
     let difficulty: String
+    let id: Int
     let solved: [[Int]]
     let unsolved: [[Int]]
 }
