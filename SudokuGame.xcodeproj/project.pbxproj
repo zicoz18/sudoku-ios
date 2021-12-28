@@ -11,6 +11,8 @@
 		B7085CAA277A37BC0024466E /* SolvedSudoku.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7085CA9277A37BC0024466E /* SolvedSudoku.swift */; };
 		B7085CAC277A37E00024466E /* Sudoku.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7085CAB277A37E00024466E /* Sudoku.swift */; };
 		B7085CB0277B0C060024466E /* LeaderboardData.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7085CAF277B0C060024466E /* LeaderboardData.swift */; };
+		B7085CB2277B64D20024466E /* UserSudokuRelation.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7085CB1277B64D20024466E /* UserSudokuRelation.swift */; };
+		B7085CB4277B65CF0024466E /* UserSudokuRelationList.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7085CB3277B65CF0024466E /* UserSudokuRelationList.swift */; };
 		B7547D3027709619005D489D /* SolveSudokuCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7547D2F27709619005D489D /* SolveSudokuCollectionViewCell.swift */; };
 		B7547D32277096F7005D489D /* SolveSudokuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7547D31277096F7005D489D /* SolveSudokuViewController.swift */; };
 		B7547D362770FA01005D489D /* SolvingNumbersCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7547D352770FA01005D489D /* SolvingNumbersCollectionViewCell.swift */; };
@@ -38,6 +40,8 @@
 		B7085CA9277A37BC0024466E /* SolvedSudoku.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SolvedSudoku.swift; sourceTree = "<group>"; };
 		B7085CAB277A37E00024466E /* Sudoku.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sudoku.swift; sourceTree = "<group>"; };
 		B7085CAF277B0C060024466E /* LeaderboardData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaderboardData.swift; sourceTree = "<group>"; };
+		B7085CB1277B64D20024466E /* UserSudokuRelation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSudokuRelation.swift; sourceTree = "<group>"; };
+		B7085CB3277B65CF0024466E /* UserSudokuRelationList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSudokuRelationList.swift; sourceTree = "<group>"; };
 		B7547D2F27709619005D489D /* SolveSudokuCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SolveSudokuCollectionViewCell.swift; sourceTree = "<group>"; };
 		B7547D31277096F7005D489D /* SolveSudokuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SolveSudokuViewController.swift; sourceTree = "<group>"; };
 		B7547D352770FA01005D489D /* SolvingNumbersCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SolvingNumbersCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -162,6 +166,8 @@
 				B7085CAB277A37E00024466E /* Sudoku.swift */,
 				B7085CAF277B0C060024466E /* LeaderboardData.swift */,
 				FE420A50277B1FFE002C6175 /* SudokuList.swift */,
+				B7085CB1277B64D20024466E /* UserSudokuRelation.swift */,
+				B7085CB3277B65CF0024466E /* UserSudokuRelationList.swift */,
 			);
 			path = Modal;
 			sourceTree = "<group>";
@@ -289,6 +295,7 @@
 				FE3E9A47276F7315009DE801 /* DataSource.swift in Sources */,
 				B7547D362770FA01005D489D /* SolvingNumbersCollectionViewCell.swift in Sources */,
 				FE3E9A4B276F752A009DE801 /* DataSourceDelegate.swift in Sources */,
+				B7085CB2277B64D20024466E /* UserSudokuRelation.swift in Sources */,
 				B7085CAA277A37BC0024466E /* SolvedSudoku.swift in Sources */,
 				B75721AD2768A5D300F78593 /* AppDelegate.swift in Sources */,
 				B7085CB0277B0C060024466E /* LeaderboardData.swift in Sources */,
@@ -298,6 +305,7 @@
 				FE420A51277B1FFE002C6175 /* SudokuList.swift in Sources */,
 				B7547D32277096F7005D489D /* SolveSudokuViewController.swift in Sources */,
 				B75721CF2768A87600F78593 /* SudokuCollectionViewCell.swift in Sources */,
+				B7085CB4277B65CF0024466E /* UserSudokuRelationList.swift in Sources */,
 				B7547D3027709619005D489D /* SolveSudokuCollectionViewCell.swift in Sources */,
 				B75721C42768A69C00F78593 /* SudokusViewController.swift in Sources */,
 				B75721CA2768A6E000F78593 /* MenuViewController.swift in Sources */,

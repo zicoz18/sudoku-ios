@@ -58,7 +58,7 @@ class DataSource {
     
     func loadSudokus() {
         let urlSession = URLSession.shared
-        if let url = URL(string: "\(baseURL)/updated.json") {
+        if let url = URL(string: "\(baseURL)/updatedSudokusTrial.json") {
             var urlRequest = URLRequest(url: url)
             urlRequest.httpMethod = "GET"
             urlRequest.addValue("application/json", forHTTPHeaderField: "Content-Type")
@@ -71,6 +71,35 @@ class DataSource {
                         sudokuArray.append(value)
                     }
                     self.Sudokus = sudokuArray
+                    DispatchQueue.main.async {
+                        self.delegate?.sudokusLoaded()
+                    }
+                }
+            }
+            dataTask.resume()
+        }
+    }
+    
+    func postUserSudokuRelationData(relationData: UserSudokuRelation) {
+        let urlSession = URLSession.shared
+        if let url = URL(string: "\(baseURL)/updatedRelations/relations.json") {
+            var urlRequest = URLRequest(url: url)
+            urlRequest.httpMethod = "POST"
+            urlRequest.addValue("application/json", forHTTPHeaderField: "Content-Type")
+            let jsonData = try! JSONEncoder().encode(relationData)
+            urlRequest.httpBody = jsonData
+            let dataTask = urlSession.dataTask(with: urlRequest) { data, response, error in
+                if let data = data {
+                    /*
+                    let decoder = JSONDecoder()
+                    let sudokusData = try! decoder.decode(SudokuList.self, from: data)
+                    var sudokuArray: [Sudoku] = []
+                    for (_, value) in sudokusData.sudokus {
+                        sudokuArray.append(value)
+                    }
+                    self.Sudokus = sudokuArray
+                     */
+                    
                     DispatchQueue.main.async {
                         self.delegate?.sudokusLoaded()
                     }
