@@ -41,7 +41,7 @@ class DataSource {
             let dataTask = urlSession.dataTask(with: urlRequest) { data, response, error in
                 if let data = data {
                     let decoder = JSONDecoder()
-                    let leaderboardData = try! decoder.decode(Leaderboard.self, from: data)
+                    let leaderboardData = try! decoder.decode(LeaderboardData.self, from: data)
                     var leaderboardArray: [LeaderboardItem] = []
                     for (_, value) in leaderboardData.leaderboards {
                         leaderboardArray.append(value)
@@ -69,7 +69,6 @@ class DataSource {
                     var sudokuArray: [Sudoku] = []
                     for (_, value) in sudokusData.sudokus {
                         sudokuArray.append(value)
-                       print("\(value))")
                     }
                     self.Sudokus = sudokuArray
                     DispatchQueue.main.async {
