@@ -16,6 +16,10 @@ class SolveSudokuViewController: UIViewController {
     
     var dbRef: DatabaseReference! = Database.database().reference()
     
+    // Timer
+    var seconds = 0
+    var timer = Timer()
+    
     // for testing
     var solvedSudokuList: [SolvedSudoku] = []
 
@@ -65,8 +69,9 @@ class SolveSudokuViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.title = "Solve Sudoku"
+        self.title = "00:00"
         dataSource.delegate = self
+        self.runTimer()
         // Do any additional setup after loading the view.
     }
     
@@ -80,6 +85,24 @@ class SolveSudokuViewController: UIViewController {
         // Pass the selected object to the new view controller.
     }
     */
+    
+    func runTimer() {
+        timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true, block: { Timer in
+            self.updateTimer()
+        })
+    }
+    
+    func updateTimer() {
+        self.seconds += 1
+        self.title = secondsToString(seconds: self.seconds)
+    }
+    
+    func secondsToString(seconds: Int) -> String {
+        let minutes = seconds / 60 % 60
+        let second = seconds % 60
+        return String(format: "%02i:%02i", minutes, second)
+    }
+    
     func checkIfSudokuSolved() -> Bool {
         var solved = true
         for i in 0...8 {
