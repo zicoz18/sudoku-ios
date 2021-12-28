@@ -24,12 +24,20 @@ class DataSource {
         return Leaderboard[index]
     }
     
+    func getLeaderboardItems() -> [LeaderboardItem] {
+        return Leaderboard
+    }
+    
     func getNumberOfSudokus() -> Int {
         return Sudokus.count
     }
     
     func getSudokuWithIndex(index: Int) -> Sudoku {
         return Sudokus[index]
+    }
+    
+    func getSudokus() -> [Sudoku] {
+        return Sudokus
     }
     
     func loadLeaderboard() {
