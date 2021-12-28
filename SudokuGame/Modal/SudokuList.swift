@@ -8,5 +8,5 @@
 import Foundation
 
 struct SudokuList: Decodable {
-    var sudokus: [String: UpdatedSudoku]
+    var sudokus: [String: Sudoku]
 }

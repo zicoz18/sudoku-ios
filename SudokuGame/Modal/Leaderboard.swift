@@ -7,6 +7,6 @@
 
 import Foundation
 
-struct TrialModel: Decodable {
+struct Leaderboard: Decodable {
     var leaderboards: [String: LeaderboardItem]
 }

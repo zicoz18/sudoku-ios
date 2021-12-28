@@ -91,9 +91,9 @@ class SolveSudokuViewController: UIViewController {
                     let updatedSudokuSolved = relatedSudokuSudoku?["solved"]
                     let updatedSudokuUnsolved = relatedSudokuSudoku?["unsolved"]
                     
-                    let updatedSudokuInstance = UpdatedSudoku(difficulty: updatedSudokuDif as! String, solved: updatedSudokuSolved as! [[Int]] , unsolved: updatedSudokuUnsolved as! [[Int]])
+                    let updatedSudokuInstance = Sudoku(difficulty: updatedSudokuDif as! String, solved: updatedSudokuSolved as! [[Int]] , unsolved: updatedSudokuUnsolved as! [[Int]])
                 
-                    let selectedSudokuSolved = SolvedSudoku(sudoku: updatedSudokuInstance as! UpdatedSudoku, time: relatedSudokuTime as! Int, userMail: relatedSudokuEmail as! String)
+                    let selectedSudokuSolved = SolvedSudoku(sudoku: updatedSudokuInstance as! Sudoku, time: relatedSudokuTime as! Int, userMail: relatedSudokuEmail as! String)
                     
                     // print("RelatedSudoku: \(selectedSudokuSolved)")
                     self.solvedSudokuList.append(selectedSudokuSolved)
@@ -106,7 +106,7 @@ class SolveSudokuViewController: UIViewController {
         })
         
         
-        let currentSudoku = UpdatedSudoku(difficulty: "hard", solved: selectedSudokuSolved!, unsolved: selectedSudokuUnsolved!)
+        let currentSudoku = Sudoku(difficulty: "hard", solved: selectedSudokuSolved!, unsolved: selectedSudokuUnsolved!)
         let toAddData = SolvedSudoku(sudoku: currentSudoku, time: 30, userMail: userEmail)
         let sudokuObject: [String: Any] = [
             "solved": toAddData.sudoku.solved,
