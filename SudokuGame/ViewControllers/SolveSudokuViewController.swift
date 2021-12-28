@@ -105,14 +105,14 @@ class SolveSudokuViewController: UIViewController {
                         let droppedCell = solveSudokuCollectionView.cellForItem(at: droppedIndexPath) as! SolveSudokuCollectionViewCell
                         droppedCell.valueLabel.text = String(draggedNumber)
                         let isSolved = checkIfSudokuSolved()
-                        //if (isSolved) {
+                        if (isSolved) {
                             if let userEmail = FirebaseAuth.Auth.auth().currentUser?.email {
                                 print("Gets here, adds the user-sudoku-relation data to DB.")
                                 addUserSudokuRelationData()
                                 addLeaderboardData()
                                 // TODO: Navigate to other screen or write solvingSudoku data to db
                             }
-                        //}
+                        }
                     }
                 }
             }
