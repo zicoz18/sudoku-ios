@@ -8,6 +8,6 @@
 import UIKit
 
 class SudokuCollectionViewCell: UICollectionViewCell {
-    @IBOutlet weak var difficultyLabel: UILabel!
+    @IBOutlet weak var sudokuImage: UIImageView!
     
 }

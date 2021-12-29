@@ -6,6 +6,8 @@
 //
 
 import UIKit
+import Firebase
+import FirebaseStorage
 
 class SudokusViewController: UIViewController {
     
@@ -13,6 +15,7 @@ class SudokusViewController: UIViewController {
     var sudokus: [Sudoku] = []
     var filteredSudokus: [Sudoku] = []
     var selectedFilter: String = ""
+    let storage = Storage.storage()
     
     @IBOutlet weak var sudokusCollectionView: UICollectionView!
     
@@ -107,7 +110,14 @@ extension SudokusViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "singleSudoku", for: indexPath) as! SudokuCollectionViewCell
         let sudoku = filteredSudokus[indexPath.row]
-        cell.difficultyLabel.text = sudoku.difficulty
+        let id = sudoku.id
+        let storageRef = storage.reference(forURL: "gs://sudokube-7935b.appspot.com/sudokuImages/sudokuImages/image_\(id).png")
+        storageRef.getData(maxSize: 10 * 1024 * 1024) { data, error in
+            if let data = data{
+                let image = UIImage(data: data)
+                cell.sudokuImage.image = image
+                    }
+        }
         return cell
     }
 }
