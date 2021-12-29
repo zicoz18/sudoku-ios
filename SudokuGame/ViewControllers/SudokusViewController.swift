@@ -33,7 +33,7 @@ class SudokusViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let cell = sender as! SudokuCollectionViewCell
         if let indexPath = self.sudokusCollectionView.indexPath(for: cell) {
-            let sudoku = dataSource.getSudokuWithIndex(index: indexPath.row)
+            let sudoku = filteredSudokus[indexPath.row]
             let solveSudokuViewController = segue.destination as! SolveSudokuViewController
             solveSudokuViewController.sudokuId = sudoku.id
             solveSudokuViewController.sudokuDifficulty = sudoku.difficulty
