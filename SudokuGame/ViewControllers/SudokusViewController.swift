@@ -13,17 +13,21 @@ class SudokusViewController: UIViewController {
     
     let dataSource = DataSource()
     var sudokus: [Sudoku] = []
+    var relations: [UserSudokuRelation] = []
+    var filteredRelations: [UserSudokuRelation] = []
+    var solvedSudokuIds: [Int] = []
     var filteredSudokus: [Sudoku] = []
-    var selectedFilter: String = ""
+    var selectedFilter: String = "all"
+    let pickerOptions: [String] = ["All", "Easy", "Medium", "Hard", "Solved"]
     let storage = Storage.storage()
     
     @IBOutlet weak var sudokusCollectionView: UICollectionView!
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "Sudokus"
         dataSource.loadSudokus()
+        dataSource.loadUserSudokuRelations()
         dataSource.delegate = self
     }
     
@@ -43,57 +47,51 @@ class SudokusViewController: UIViewController {
         }
     }
     
-    @IBAction func filterEasy(_ sender: Any) {
-        if(selectedFilter == "easy") {
-            selectedFilter = ""
-        } else {
-            selectedFilter = "easy"
-        }
-        filterSudokus()
-    }
-    
-    @IBAction func filterMedium(_ sender: Any) {
-        if(selectedFilter == "medium") {
-            selectedFilter = ""
-        } else {
-            selectedFilter = "medium"
-        }
-        filterSudokus()
-    }
-    
-    @IBAction func filterHard(_ sender: Any) {
-        if(selectedFilter == "hard") {
-            selectedFilter = ""
-        } else {
-            selectedFilter = "hard"
-        }
-        filterSudokus()
-    }
-    
     func filterSudokus() {
-        if (selectedFilter == "") {
+        if (selectedFilter == "all") {
             filteredSudokus = sudokus
             sudokusCollectionView.reloadData()
             return
-        }
-        filteredSudokus = sudokus.filter { sudoku in return sudoku.difficulty == selectedFilter
+        } else if (selectedFilter == "solved") {
+            let userEmail = FirebaseAuth.Auth.auth().currentUser?.email ?? ""
+            filteredRelations = relations.filter {
+                relation in return relation.userEmail == userEmail
+            }
+            solvedSudokuIds = filteredRelations.map { $0.solvedSudokuId }
+            filteredSudokus = sudokus.filter {
+                sudoku in return solvedSudokuIds.contains(sudoku.id)
+            }
+        } else {
+            filteredSudokus = sudokus.filter {
+                sudoku in return sudoku.difficulty == selectedFilter
+            }
         }
         sudokusCollectionView.reloadData()
     }
 }
 
-extension SudokusViewController: DataSourceDelegate {
-    func leaderboardLoaded() {}
+extension SudokusViewController: UIPickerViewDelegate {
     
-    func sudokusLoaded() {
-        sudokus = dataSource.getSudokus()
-        filteredSudokus = sudokus
-        sudokusCollectionView.reloadData()
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        return pickerOptions[row]
     }
     
-    func userSudokuRelationDataAdded() {}
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        selectedFilter = pickerOptions[row].lowercased()
+        print(selectedFilter)
+        filterSudokus()
+    }
+}
+
+extension SudokusViewController: UIPickerViewDataSource {
     
-    func leaderboardItemDataAdded() {}
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return pickerOptions.count
+    }
 }
 
 extension SudokusViewController: UICollectionViewDataSource {
@@ -120,4 +118,21 @@ extension SudokusViewController: UICollectionViewDataSource {
         }
         return cell
     }
+}
+
+extension SudokusViewController: DataSourceDelegate {
+    
+    func relationsLoaded() {
+        relations = dataSource.getRelations()
+    }
+    
+    func sudokusLoaded() {
+        sudokus = dataSource.getSudokus()
+        filteredSudokus = sudokus
+        sudokusCollectionView.reloadData()
+    }
+    
+    func leaderboardLoaded() {}
+    func userSudokuRelationDataAdded() {}
+    func leaderboardItemDataAdded() {}
 }

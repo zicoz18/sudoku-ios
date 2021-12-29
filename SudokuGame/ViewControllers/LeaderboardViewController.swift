@@ -12,7 +12,8 @@ class LeaderboardViewController: UIViewController {
     let dataSource = DataSource()
     var items: [LeaderboardItem] = []
     var filteredItems: [LeaderboardItem] = []
-    var selectedFilter: String = ""
+    var selectedFilter: String = "all"
+    let pickerOptions: [String] = ["All", "Easy", "Medium", "Hard"]
     
     @IBOutlet weak var leaderboardTableView: UITableView!
     
@@ -23,57 +24,41 @@ class LeaderboardViewController: UIViewController {
         dataSource.delegate = self
     }
     
-    @IBAction func filterEasy(_ sender: Any) {
-        if(selectedFilter == "easy") {
-            selectedFilter = ""
-        } else {
-            selectedFilter = "easy"
-        }
-        filterItems()
-    }
-    
-    @IBAction func filterMedium(_ sender: Any) {
-        if(selectedFilter == "medium") {
-            selectedFilter = ""
-        } else {
-            selectedFilter = "medium"
-        }
-        filterItems()
-    }
-    
-    @IBAction func filterHard(_ sender: Any) {
-        if(selectedFilter == "hard") {
-            selectedFilter = ""
-        } else {
-            selectedFilter = "hard"
-        }
-        filterItems()
-    }
-    
     func filterItems() {
-        if (selectedFilter == "") {
+        if (selectedFilter == "all") {
             filteredItems = items
             leaderboardTableView.reloadData()
             return
-        }
-        filteredItems = items.filter { item in return item.difficulty == selectedFilter
+        } else {
+            filteredItems = items.filter { item in return item.difficulty == selectedFilter
+            }
         }
         leaderboardTableView.reloadData()
     }
 }
 
-extension LeaderboardViewController: DataSourceDelegate {
-    func leaderboardLoaded() {
-        items = dataSource.getLeaderboardItems()
-        filteredItems = items
-        leaderboardTableView.reloadData()
+extension LeaderboardViewController: UIPickerViewDelegate {
+    
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        return pickerOptions[row]
     }
     
-    func sudokusLoaded() {}
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        selectedFilter = pickerOptions[row].lowercased()
+        print(selectedFilter)
+        filterItems()
+    }
+}
+
+extension LeaderboardViewController: UIPickerViewDataSource {
     
-    func userSudokuRelationDataAdded() {}
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
+    }
     
-    func leaderboardItemDataAdded() {}
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return pickerOptions.count
+    }
 }
 
 extension LeaderboardViewController: UITableViewDataSource {
@@ -95,4 +80,18 @@ extension LeaderboardViewController: UITableViewDataSource {
         cell.scoreLabel.text = String(item.Score)
         return cell
     }
+}
+
+extension LeaderboardViewController: DataSourceDelegate {
+
+    func leaderboardLoaded() {
+        items = dataSource.getLeaderboardItems()
+        filteredItems = items
+        leaderboardTableView.reloadData()
+    }
+    
+    func relationsLoaded() {}
+    func sudokusLoaded() {}
+    func userSudokuRelationDataAdded() {}
+    func leaderboardItemDataAdded() {}
 }
