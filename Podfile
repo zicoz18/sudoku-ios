@@ -6,10 +6,12 @@ target 'SudokuGame' do
   use_frameworks!
 
   # Pods for SudokuGame
+pod 'Firebase/Analytics'
 
 pod 'Firebase/Core'
 pod 'Firebase/Auth'
 pod 'Firebase/Database'
+pod 'Firebase/Storage'
 pod 'GoogleSignIn'
 
 end
