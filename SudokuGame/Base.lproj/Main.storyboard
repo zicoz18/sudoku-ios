@@ -33,9 +33,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Uqg-Ke-dmA">
-                                <rect key="frame" x="20" y="181" width="374" height="681"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Uqg-Ke-dmA">
+                                <rect key="frame" x="20" y="218" width="374" height="644"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="OLT-lN-MBT">
                                     <size key="itemSize" width="188" height="181"/>
@@ -80,41 +79,27 @@
                                     <outlet property="delegate" destination="AxT-dL-llL" id="1M7-Xz-6Fy"/>
                                 </connections>
                             </collectionView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PDt-ZS-1vG">
-                                <rect key="frame" x="60" y="118" width="55" height="31"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="gray" title="Easy"/>
+                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CPm-Pf-ffF">
+                                <rect key="frame" x="47" y="88" width="320" height="100"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="100" id="JGe-Dd-kkG"/>
+                                </constraints>
                                 <connections>
-                                    <action selector="filterEasy:" destination="AxT-dL-llL" eventType="touchUpInside" id="edE-gy-fvI"/>
+                                    <outlet property="dataSource" destination="AxT-dL-llL" id="z9j-kw-gfM"/>
+                                    <outlet property="delegate" destination="AxT-dL-llL" id="zoX-NP-qvC"/>
                                 </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="acc-h1-Jzm">
-                                <rect key="frame" x="155" y="118" width="76" height="31"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="gray" title="Medium"/>
-                                <connections>
-                                    <action selector="filterMedium:" destination="AxT-dL-llL" eventType="touchUpInside" id="YJI-KQ-4gA"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="c7W-20-ijc">
-                                <rect key="frame" x="271" y="118" width="56" height="31"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="gray" title="Hard"/>
-                                <connections>
-                                    <action selector="filterHard:" destination="AxT-dL-llL" eventType="touchUpInside" id="zsR-Dn-h9f"/>
-                                </connections>
-                            </button>
+                            </pickerView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Yo5-eB-xjh"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="acc-h1-Jzm" firstAttribute="leading" secondItem="PDt-ZS-1vG" secondAttribute="trailing" constant="40" id="6g5-ZH-hkC"/>
-                            <constraint firstItem="c7W-20-ijc" firstAttribute="leading" secondItem="acc-h1-Jzm" secondAttribute="trailing" constant="40" id="BpN-eH-hGa"/>
-                            <constraint firstItem="c7W-20-ijc" firstAttribute="centerY" secondItem="acc-h1-Jzm" secondAttribute="centerY" id="Ho2-mR-jfD"/>
-                            <constraint firstItem="acc-h1-Jzm" firstAttribute="centerY" secondItem="PDt-ZS-1vG" secondAttribute="centerY" id="Jis-eL-xjf"/>
-                            <constraint firstItem="PDt-ZS-1vG" firstAttribute="top" secondItem="Yo5-eB-xjh" secondAttribute="top" constant="30" id="MLd-D1-ovs"/>
-                            <constraint firstItem="PDt-ZS-1vG" firstAttribute="leading" secondItem="Yo5-eB-xjh" secondAttribute="leading" constant="60" id="g62-z5-8za"/>
-                            <constraint firstItem="Yo5-eB-xjh" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="c7W-20-ijc" secondAttribute="trailing" constant="60" id="nyH-if-CRR"/>
+                            <constraint firstItem="Uqg-Ke-dmA" firstAttribute="top" secondItem="CPm-Pf-ffF" secondAttribute="bottom" constant="30" id="Laa-i8-B2f"/>
+                            <constraint firstItem="CPm-Pf-ffF" firstAttribute="centerX" secondItem="Yo5-eB-xjh" secondAttribute="centerX" id="PhL-EF-2VH"/>
+                            <constraint firstItem="Yo5-eB-xjh" firstAttribute="trailing" secondItem="Uqg-Ke-dmA" secondAttribute="trailing" constant="20" id="hza-fo-4hi"/>
+                            <constraint firstItem="Yo5-eB-xjh" firstAttribute="bottom" secondItem="Uqg-Ke-dmA" secondAttribute="bottom" id="lCp-6F-Prl"/>
+                            <constraint firstItem="CPm-Pf-ffF" firstAttribute="top" secondItem="Yo5-eB-xjh" secondAttribute="top" id="pC8-jR-ty8"/>
+                            <constraint firstItem="Uqg-Ke-dmA" firstAttribute="leading" secondItem="Yo5-eB-xjh" secondAttribute="leading" constant="20" id="vYh-Ou-6Op"/>
+                            <constraint firstItem="Uqg-Ke-dmA" firstAttribute="centerX" secondItem="Yo5-eB-xjh" secondAttribute="centerX" id="zE6-in-JYT"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Item" id="wAy-VC-P0k"/>
@@ -135,9 +120,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="QCG-yh-p9k">
-                                <rect key="frame" x="20" y="198" width="374" height="664"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="QCG-yh-p9k">
+                                <rect key="frame" x="20" y="218" width="374" height="644"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="singleUser" rowHeight="53" id="RWI-Uc-ywS" customClass="UserTableViewCell" customModule="SudokuGame" customModuleProvider="target">
@@ -178,44 +162,26 @@
                                     <outlet property="delegate" destination="7Fr-k8-xqf" id="O8J-Si-28y"/>
                                 </connections>
                             </tableView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wFZ-lx-BOR">
-                                <rect key="frame" x="60" y="118" width="55" height="31"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="gray" title="Easy"/>
+                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FOw-F3-aMr">
+                                <rect key="frame" x="47" y="88" width="320" height="100"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="100" id="Xkk-ov-TLx"/>
+                                </constraints>
                                 <connections>
-                                    <action selector="filterEasy:" destination="AxT-dL-llL" eventType="touchUpInside" id="aXc-DV-1Gn"/>
-                                    <action selector="filterEasy:" destination="7Fr-k8-xqf" eventType="touchUpInside" id="bfp-4Q-Nrt"/>
+                                    <outlet property="dataSource" destination="7Fr-k8-xqf" id="TIm-W9-f8j"/>
+                                    <outlet property="delegate" destination="7Fr-k8-xqf" id="We2-9k-IGd"/>
                                 </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="44t-hs-Ahr">
-                                <rect key="frame" x="155" y="118" width="76" height="31"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="gray" title="Medium"/>
-                                <connections>
-                                    <action selector="filterMedium:" destination="AxT-dL-llL" eventType="touchUpInside" id="dE8-PT-Vns"/>
-                                    <action selector="filterMedium:" destination="7Fr-k8-xqf" eventType="touchUpInside" id="dmY-s8-ZiN"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sr2-Lv-13m">
-                                <rect key="frame" x="271" y="118" width="56" height="31"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="gray" title="Hard"/>
-                                <connections>
-                                    <action selector="filterHard:" destination="7Fr-k8-xqf" eventType="touchUpInside" id="5iH-Z3-Ezt"/>
-                                    <action selector="filterHard:" destination="AxT-dL-llL" eventType="touchUpInside" id="Mg0-Oz-l71"/>
-                                </connections>
-                            </button>
+                            </pickerView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Ihm-IS-xbz"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="wFZ-lx-BOR" firstAttribute="leading" secondItem="Ihm-IS-xbz" secondAttribute="leading" constant="60" id="7yT-wY-h9x"/>
-                            <constraint firstItem="sr2-Lv-13m" firstAttribute="centerY" secondItem="44t-hs-Ahr" secondAttribute="centerY" id="NBX-kk-MAo"/>
-                            <constraint firstItem="wFZ-lx-BOR" firstAttribute="top" secondItem="Ihm-IS-xbz" secondAttribute="top" constant="30" id="Nbx-Ql-zau"/>
-                            <constraint firstItem="44t-hs-Ahr" firstAttribute="leading" secondItem="wFZ-lx-BOR" secondAttribute="trailing" constant="40" id="VvI-o5-Nla"/>
-                            <constraint firstItem="Ihm-IS-xbz" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="sr2-Lv-13m" secondAttribute="trailing" constant="60" id="WY5-3m-ubS"/>
-                            <constraint firstItem="44t-hs-Ahr" firstAttribute="centerY" secondItem="wFZ-lx-BOR" secondAttribute="centerY" id="jSW-Gw-xVc"/>
-                            <constraint firstItem="sr2-Lv-13m" firstAttribute="leading" secondItem="44t-hs-Ahr" secondAttribute="trailing" constant="40" id="nMh-eN-zLA"/>
+                            <constraint firstItem="Ihm-IS-xbz" firstAttribute="trailing" secondItem="QCG-yh-p9k" secondAttribute="trailing" constant="20" id="0zx-3X-z09"/>
+                            <constraint firstItem="Ihm-IS-xbz" firstAttribute="top" secondItem="FOw-F3-aMr" secondAttribute="top" id="8zj-Y4-vft"/>
+                            <constraint firstItem="QCG-yh-p9k" firstAttribute="top" secondItem="FOw-F3-aMr" secondAttribute="bottom" constant="30" id="DzM-oM-XbF"/>
+                            <constraint firstItem="FOw-F3-aMr" firstAttribute="centerX" secondItem="Ihm-IS-xbz" secondAttribute="centerX" id="fKD-hN-syU"/>
+                            <constraint firstItem="Ihm-IS-xbz" firstAttribute="bottom" secondItem="QCG-yh-p9k" secondAttribute="bottom" id="ykd-tU-Th9"/>
+                            <constraint firstItem="QCG-yh-p9k" firstAttribute="leading" secondItem="Ihm-IS-xbz" secondAttribute="leading" constant="20" id="ytK-mn-JtI"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Item" id="fVD-qG-WRT"/>

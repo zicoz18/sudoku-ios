@@ -215,11 +215,6 @@ extension SolveSudokuViewController: UICollectionViewDropDelegate {
 
 
 extension SolveSudokuViewController: DataSourceDelegate {
-    func leaderboardLoaded() {
-    }
-    
-    func sudokusLoaded() {
-    }
     
     func userSudokuRelationDataAdded() {
          print("Relation data added")
@@ -228,4 +223,8 @@ extension SolveSudokuViewController: DataSourceDelegate {
     func leaderboardItemDataAdded() {
         print("Leaderboard data added")
     }
+    
+    func relationsLoaded() {}
+    func leaderboardLoaded() {}
+    func sudokusLoaded() {}
 }

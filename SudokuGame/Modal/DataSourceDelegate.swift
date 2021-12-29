@@ -10,6 +10,7 @@ import Foundation
 protocol DataSourceDelegate {
     func leaderboardLoaded()
     func sudokusLoaded()
+    func relationsLoaded()
     func userSudokuRelationDataAdded()
     func leaderboardItemDataAdded()
 }

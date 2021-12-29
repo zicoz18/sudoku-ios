@@ -10,6 +10,7 @@ import Foundation
 class DataSource {
     private var Leaderboard: [LeaderboardItem] = []
     private var Sudokus: [Sudoku] = []
+    private var Relations: [UserSudokuRelation] = []
     private let baseURL = "https://sudokube-7935b-default-rtdb.europe-west1.firebasedatabase.app/"
     var delegate: DataSourceDelegate?
     
@@ -38,6 +39,10 @@ class DataSource {
     
     func getSudokus() -> [Sudoku] {
         return Sudokus
+    }
+    
+    func getRelations() -> [UserSudokuRelation] {
+        return Relations
     }
     
     func loadLeaderboard() {
@@ -81,6 +86,30 @@ class DataSource {
                     self.Sudokus = sudokuArray
                     DispatchQueue.main.async {
                         self.delegate?.sudokusLoaded()
+                    }
+                }
+            }
+            dataTask.resume()
+        }
+    }
+    
+    func loadUserSudokuRelations() {
+        let urlSession = URLSession.shared
+        if let url = URL(string: "\(baseURL)/updatedRelations.json") {
+            var urlRequest = URLRequest(url: url)
+            urlRequest.httpMethod = "GET"
+            urlRequest.addValue("application/json", forHTTPHeaderField: "Content-Type")
+            let dataTask = urlSession.dataTask(with: urlRequest) { data, response, error in
+                if let data = data {
+                    let decoder = JSONDecoder()
+                    let relationData = try! decoder.decode(UserSudokuRelationList.self, from: data)
+                    var relationsArray: [UserSudokuRelation] = []
+                    for (_, value) in relationData.relations {
+                        relationsArray.append(value)
+                    }
+                    self.Relations = relationsArray
+                    DispatchQueue.main.async {
+                        self.delegate?.relationsLoaded()
                     }
                 }
             }
