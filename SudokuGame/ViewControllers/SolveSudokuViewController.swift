@@ -70,8 +70,10 @@ class SolveSudokuViewController: UIViewController {
         var solved = true
         for i in 0...8 {
             for j in 0...8 {
-                if (workingSudoku![i][j] == 0) {
-                    solved = false
+                if let workingSudoku = workingSudoku {
+                    if (workingSudoku[i][j] == 0) {
+                        solved = false
+                    }
                 }
             }
         }
@@ -101,7 +103,7 @@ class SolveSudokuViewController: UIViewController {
             if (workingSudoku[rowCol[0]][rowCol[1]] == 0) {
                 if let selectedSudokuSolved = selectedSudokuSolved {
                     if (selectedSudokuSolved[rowCol[0]][rowCol[1]] == draggedNumber) {
-                        workingSudoku[rowCol[0]][rowCol[1]] = draggedNumber
+                        self.workingSudoku?[rowCol[0]][rowCol[1]] = draggedNumber
                         let droppedCell = solveSudokuCollectionView.cellForItem(at: droppedIndexPath) as! SolveSudokuCollectionViewCell
                         droppedCell.valueLabel.text = String(draggedNumber)
                         let isSolved = checkIfSudokuSolved()
