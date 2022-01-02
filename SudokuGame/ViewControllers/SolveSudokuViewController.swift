@@ -29,13 +29,18 @@ class SolveSudokuViewController: UIViewController {
     let dataSource = DataSource()
     let numberArray = [1, 2, 3, 4, 5, 6, 7, 8, 9]
     
-    
+    // flags for navigation
+    var relationDataAdded: Bool = false
+    var leaderboardDataAdded: Bool = false
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "00:00"
         dataSource.delegate = self
         self.runTimer()
+        relationDataAdded = false
+        leaderboardDataAdded = false
         // Do any additional setup after loading the view.
     }
     
@@ -97,7 +102,6 @@ class SolveSudokuViewController: UIViewController {
     }
     
     func checkSudokuSolving(draggedNumber: Int, droppedIndexPath: IndexPath) {
-        print(FirebaseAuth.Auth.auth().currentUser?.email)
         let rowCol = indexPathToRowCol(indexPath: droppedIndexPath)
         if var workingSudoku = workingSudoku {
             if (workingSudoku[rowCol[0]][rowCol[1]] == 0) {
@@ -106,15 +110,14 @@ class SolveSudokuViewController: UIViewController {
                         self.workingSudoku?[rowCol[0]][rowCol[1]] = draggedNumber
                         let droppedCell = solveSudokuCollectionView.cellForItem(at: droppedIndexPath) as! SolveSudokuCollectionViewCell
                         droppedCell.valueLabel.text = String(draggedNumber)
-                        let isSolved = checkIfSudokuSolved()
-                        if (isSolved) {
-                            if let userEmail = FirebaseAuth.Auth.auth().currentUser?.email {
-                                print("Gets here, adds the user-sudoku-relation data to DB.")
+                        //let isSolved = checkIfSudokuSolved()
+                        //if (isSolved) {
+                            if (FirebaseAuth.Auth.auth().currentUser?.email) != nil {
                                 addUserSudokuRelationData()
                                 addLeaderboardData()
                                 // TODO: Navigate to other screen or write solvingSudoku data to db
                             }
-                        }
+                        //}
                     }
                 }
             }
@@ -218,15 +221,28 @@ extension SolveSudokuViewController: UICollectionViewDropDelegate {
 
 extension SolveSudokuViewController: DataSourceDelegate {
     
+    func navigateIfDatasAdded() {
+        if (relationDataAdded && leaderboardDataAdded) {
+            let uiTabBarController = self.navigationController?.viewControllers.filter({ vc in
+                vc is UITabBarController
+        })[0] as! UITabBarController
+            self.navigationController?.popToViewController(uiTabBarController, animated: true)
+        }
+    }
+    
     func userSudokuRelationDataAdded() {
-         print("Relation data added")
+        relationDataAdded = true
+        navigateIfDatasAdded()
     }
     
     func leaderboardItemDataAdded() {
-        print("Leaderboard data added")
+        leaderboardDataAdded = true
+        navigateIfDatasAdded()
     }
     
     func relationsLoaded() {}
+    
     func leaderboardLoaded() {}
+
     func sudokusLoaded() {}
 }
