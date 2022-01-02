@@ -10,41 +10,52 @@ import FirebaseAuth
 
 class LoginViewController: ViewController {
 
+    @IBOutlet weak var errorText: UILabel!
     @IBOutlet weak var emailField: UITextField!
     @IBOutlet weak var passwordField: UITextField!
+    var validation: Bool = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        self.validation = false
     }
     
     @IBAction func signIn(_ sender: Any) {
         guard let email = emailField.text, !email.isEmpty,
         let password = passwordField.text, !password.isEmpty else {
-            print("pass and email cannot be empty")
+            errorText.text = "Email address and password cannot be empty"
+            self.validation = false
             return
         }
         FirebaseAuth.Auth.auth().signIn(withEmail: email, password: password, completion: {result, err in
             guard err == nil else {
-                print("logged in failed")
+                self.errorText.text = "Incorrect password or email address"
+                self.validation = false
                 return
             }
-            print("logged in")
+            self.validation = true
+            self.performSegue(withIdentifier: "SignInToBarController", sender: nil)
         })
     }
     
     @IBAction func signUp(_ sender: Any) {
         guard let email = emailField.text, !email.isEmpty,
         let password = passwordField.text, !password.isEmpty else {
-            print("pass and email cannot be empty")
+            errorText.text = "Email address and password cannot be empty"
+            self.validation = false
             return
         }
         FirebaseAuth.Auth.auth().createUser(withEmail: email, password: password, completion: {result, err in
             guard err == nil else {
-                print("account creation failed")
+                self.errorText.text = "Could not sign up"
+                self.validation = false
                 return
             }
-            print("account created")
+            self.validation = true
+            self.performSegue(withIdentifier: "SingUpToBarController", sender: nil)
         })
     }
     
@@ -56,8 +67,8 @@ class LoginViewController: ViewController {
         // Pass the selected object to the new view controller.
     }
     
-  /*  override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
-        return FirebaseAuth.Auth.auth().currentUser != nil
+    override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
+        return self.validation
     }
-*/
+
 }

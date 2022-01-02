@@ -16,13 +16,14 @@ class MenuViewController: ViewController {
         // Do any additional setup after loading the view.
     }
     
-
     @IBAction func signOut(_ sender: Any) {
         do {
             try FirebaseAuth.Auth.auth().signOut()
             print("signed out")
+            let loginViewController = self.storyboard?.instantiateViewController(withIdentifier: "SignIn") as! LoginViewController
+            self.navigationController?.pushViewController(loginViewController, animated: true)
         } catch {
-            print("could not sign out")
+            print("Could not sign out")
         }
     }
     
