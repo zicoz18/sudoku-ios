@@ -131,14 +131,20 @@
                                             <rect key="frame" x="0.0" y="0.0" width="374" height="53"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="User Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hOT-Vv-J8d">
-                                                    <rect key="frame" x="40" y="16" width="86" height="21"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Score" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Spz-gd-dem">
+                                                    <rect key="frame" x="289" y="16" width="45" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Score" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Spz-gd-dem">
-                                                    <rect key="frame" x="289" y="16" width="45" height="21"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Rank" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oGL-6Y-oe3">
+                                                    <rect key="frame" x="5" y="16" width="38" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="User Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hOT-Vv-J8d">
+                                                    <rect key="frame" x="63" y="16" width="86" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -146,14 +152,17 @@
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="hOT-Vv-J8d" firstAttribute="centerY" secondItem="csZ-DT-D3s" secondAttribute="centerY" id="1hf-Dx-AWe"/>
-                                                <constraint firstItem="hOT-Vv-J8d" firstAttribute="leading" secondItem="csZ-DT-D3s" secondAttribute="leading" constant="40" id="VvO-om-JFc"/>
+                                                <constraint firstItem="oGL-6Y-oe3" firstAttribute="centerY" secondItem="csZ-DT-D3s" secondAttribute="centerY" id="IKo-Yt-nwq"/>
                                                 <constraint firstItem="Spz-gd-dem" firstAttribute="centerY" secondItem="csZ-DT-D3s" secondAttribute="centerY" id="Yvc-lC-Gc7"/>
+                                                <constraint firstItem="oGL-6Y-oe3" firstAttribute="leading" secondItem="csZ-DT-D3s" secondAttribute="leading" constant="5" id="aKF-xw-4Xu"/>
                                                 <constraint firstItem="Spz-gd-dem" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="hOT-Vv-J8d" secondAttribute="trailing" constant="8" symbolic="YES" id="hqQ-Tk-dOq"/>
+                                                <constraint firstItem="hOT-Vv-J8d" firstAttribute="leading" secondItem="oGL-6Y-oe3" secondAttribute="trailing" constant="20" id="r6Q-E5-hhr"/>
                                                 <constraint firstAttribute="trailing" secondItem="Spz-gd-dem" secondAttribute="trailing" constant="40" id="wd9-H8-e9j"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="nameLabel" destination="hOT-Vv-J8d" id="GwU-TL-SBV"/>
+                                            <outlet property="rankLabel" destination="oGL-6Y-oe3" id="cJE-zH-M43"/>
                                             <outlet property="scoreLabel" destination="Spz-gd-dem" id="pXb-jT-98S"/>
                                         </connections>
                                     </tableViewCell>
@@ -373,28 +382,28 @@
                                                 </label>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NxJ-eo-T3L" userLabel="Left">
                                                     <rect key="frame" x="0.0" y="0.0" width="2" height="40"/>
-                                                    <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="2" id="6f4-Fx-4uM"/>
                                                     </constraints>
                                                 </view>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Wb9-GG-lKZ" userLabel="Top">
                                                     <rect key="frame" x="0.0" y="0.0" width="40" height="2"/>
-                                                    <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="2" id="u26-Qq-c9c"/>
                                                     </constraints>
                                                 </view>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cC5-3d-pgs" userLabel="Bottom">
                                                     <rect key="frame" x="0.0" y="38" width="40" height="2"/>
-                                                    <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="2" id="32x-OQ-EoS"/>
                                                     </constraints>
                                                 </view>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TWJ-if-Rhy" userLabel="Right">
                                                     <rect key="frame" x="38" y="0.0" width="2" height="40"/>
-                                                    <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="2" id="9pi-ej-NFy"/>
                                                     </constraints>
@@ -419,6 +428,10 @@
                                         </collectionViewCellContentView>
                                         <size key="customSize" width="40" height="40"/>
                                         <connections>
+                                            <outlet property="bottom" destination="cC5-3d-pgs" id="c2b-sw-46l"/>
+                                            <outlet property="left" destination="NxJ-eo-T3L" id="RiG-t9-b4H"/>
+                                            <outlet property="right" destination="TWJ-if-Rhy" id="o6A-zg-JZK"/>
+                                            <outlet property="top" destination="Wb9-GG-lKZ" id="Xtt-6V-TSd"/>
                                             <outlet property="valueLabel" destination="fQ8-EU-TmN" id="l6i-da-Mch"/>
                                         </connections>
                                     </collectionViewCell>

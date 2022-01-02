@@ -110,14 +110,13 @@ class SolveSudokuViewController: UIViewController {
                         self.workingSudoku?[rowCol[0]][rowCol[1]] = draggedNumber
                         let droppedCell = solveSudokuCollectionView.cellForItem(at: droppedIndexPath) as! SolveSudokuCollectionViewCell
                         droppedCell.valueLabel.text = String(draggedNumber)
-                        //let isSolved = checkIfSudokuSolved()
-                        //if (isSolved) {
+                        let isSolved = checkIfSudokuSolved()
+                        if (isSolved) {
                             if (FirebaseAuth.Auth.auth().currentUser?.email) != nil {
                                 addUserSudokuRelationData()
                                 addLeaderboardData()
-                                // TODO: Navigate to other screen or write solvingSudoku data to db
                             }
-                        //}
+                        }
                     }
                 }
             }
@@ -145,10 +144,29 @@ extension SolveSudokuViewController: UICollectionViewDataSource {
         return [row, col]
     }
     
+    func adjustColorOfTheCell(cell: SolveSudokuCollectionViewCell, color: UIColor, index: Int) {
+        
+        if (index % 3 == 0) {
+            cell.left.backgroundColor = color
+        }
+        if (index % 3 == 2) {
+            cell.right.backgroundColor = color
+        }
+        
+        if (index % 27 <= 8) {
+            cell.top.backgroundColor = color
+        }
+        
+        if (index % 27 >= 18) {
+            cell.bottom.backgroundColor = color
+        }
+    }
+    
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if (collectionView == self.solveSudokuCollectionView) {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "solveSudokuCell", for: indexPath) as! SolveSudokuCollectionViewCell
             let rowCol = indexPathToRowCol(indexPath: indexPath)
+            adjustColorOfTheCell(cell: cell, color: UIColor.black, index: indexPath.row)
             if let workingSudoku = workingSudoku {
                     let sudokuCellValue = workingSudoku[rowCol[0]][rowCol[1]]
                     if (sudokuCellValue == 0) {
