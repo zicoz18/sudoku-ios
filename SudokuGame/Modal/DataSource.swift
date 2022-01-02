@@ -59,6 +59,7 @@ class DataSource {
                     for (_, value) in leaderboardData.leaderboards {
                         leaderboardArray.append(value)
                     }
+                    leaderboardArray.sort(by: { $0.Score < $1.Score })
                     self.Leaderboard = leaderboardArray
                     DispatchQueue.main.async {
                         self.delegate?.leaderboardLoaded()
