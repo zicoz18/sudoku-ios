@@ -24,6 +24,12 @@ class LeaderboardViewController: UIViewController {
         dataSource.delegate = self
     }
     
+    func secondsToString(seconds: Int) -> String {
+        let minutes = seconds / 60 % 60
+        let second = seconds % 60
+        return String(format: "%02i:%02i", minutes, second)
+    }
+    
     func filterItems() {
         if (selectedFilter == "all") {
             filteredItems = items
@@ -76,8 +82,9 @@ extension LeaderboardViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "singleUser", for: indexPath) as! UserTableViewCell
         let item = filteredItems[indexPath.row]
+        cell.rankLabel.text = "\(indexPath.row + 1)-)"
         cell.nameLabel.text = item.Name
-        cell.scoreLabel.text = String(item.Score)
+        cell.scoreLabel.text = secondsToString(seconds: item.Score)
         return cell
     }
 }

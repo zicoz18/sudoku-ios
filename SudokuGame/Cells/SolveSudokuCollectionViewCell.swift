@@ -9,5 +9,10 @@ import UIKit
 
 class SolveSudokuCollectionViewCell: UICollectionViewCell {
  
+
+    @IBOutlet weak var right: UIView!
+    @IBOutlet weak var bottom: UIView!
+    @IBOutlet weak var top: UIView!
+    @IBOutlet weak var left: UIView!
     @IBOutlet weak var valueLabel: UILabel!
 }
