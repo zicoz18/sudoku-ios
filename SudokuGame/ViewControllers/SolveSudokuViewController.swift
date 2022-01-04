@@ -76,8 +76,10 @@ class SolveSudokuViewController: UIViewController {
         for i in 0...8 {
             for j in 0...8 {
                 if let workingSudoku = workingSudoku {
-                    if (workingSudoku[i][j] == 0) {
-                        solved = false
+                    if let solvedSudoku = selectedSudokuSolved {
+                        if (workingSudoku[i][j] != solvedSudoku[i][j]) {
+                            solved = false
+                        }
                     }
                 }
             }
@@ -104,7 +106,6 @@ class SolveSudokuViewController: UIViewController {
     func checkSudokuSolving(draggedNumber: Int, droppedIndexPath: IndexPath) {
         let rowCol = indexPathToRowCol(indexPath: droppedIndexPath)
         if var workingSudoku = workingSudoku {
-            if (workingSudoku[rowCol[0]][rowCol[1]] == 0) {
                 if selectedSudokuSolved != nil {
                         self.workingSudoku?[rowCol[0]][rowCol[1]] = draggedNumber
                         let droppedCell = solveSudokuCollectionView.cellForItem(at: droppedIndexPath) as! SolveSudokuCollectionViewCell
@@ -117,7 +118,6 @@ class SolveSudokuViewController: UIViewController {
                             }
                         }
                 }
-            }
         }
     }
 }
@@ -224,12 +224,10 @@ extension SolveSudokuViewController: UICollectionViewDropDelegate {
     func collectionView(_ collectionView: UICollectionView, performDropWith coordinator: UICollectionViewDropCoordinator) {
         if let indexPath = coordinator.destinationIndexPath {
             let items = coordinator.items
-            if (items.count == 1) {
                 let item = items.first
                 if let draggedItemValue = item?.dragItem.localObject {
                     checkSudokuSolving(draggedNumber: draggedItemValue as! Int, droppedIndexPath: indexPath)
                 }
-            }
         }
     }
 }
