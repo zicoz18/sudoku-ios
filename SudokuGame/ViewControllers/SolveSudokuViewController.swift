@@ -107,6 +107,7 @@ class SolveSudokuViewController: UIViewController {
         let rowCol = indexPathToRowCol(indexPath: droppedIndexPath)
         if var workingSudoku = workingSudoku {
                 if selectedSudokuSolved != nil {
+                    if selectedSudokuUnsolved?[rowCol[0]][rowCol[1]] == 0 {
                         self.workingSudoku?[rowCol[0]][rowCol[1]] = draggedNumber
                         let droppedCell = solveSudokuCollectionView.cellForItem(at: droppedIndexPath) as! SolveSudokuCollectionViewCell
                         droppedCell.valueLabel.text = String(draggedNumber)
@@ -117,6 +118,7 @@ class SolveSudokuViewController: UIViewController {
                                 addLeaderboardData()
                             }
                         }
+                    }
                 }
         }
     }
