@@ -21,6 +21,7 @@ class SudokusViewController: UIViewController {
     let pickerOptions: [String] = ["All", "Easy", "Medium", "Hard", "Solved"]
     let storage = Storage.storage()
     
+    @IBOutlet weak var picker: UIPickerView!
     @IBOutlet weak var sudokusCollectionView: UICollectionView!
     
     override func viewDidLoad() {
@@ -29,6 +30,7 @@ class SudokusViewController: UIViewController {
         dataSource.loadSudokus()
         dataSource.loadUserSudokuRelations()
         dataSource.delegate = self
+        picker.layer.cornerRadius = 10
     }
     
     // MARK: - Navigation

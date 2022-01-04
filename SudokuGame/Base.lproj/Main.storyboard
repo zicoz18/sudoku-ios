@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19455" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="9Ov-Zb-X0v">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="9Ov-Zb-X0v">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
         <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -114,6 +114,7 @@
                     </tabBarItem>
                     <navigationItem key="navigationItem" id="pr1-7S-IsK"/>
                     <connections>
+                        <outlet property="picker" destination="CPm-Pf-ffF" id="ymL-Mz-AK2"/>
                         <outlet property="sudokusCollectionView" destination="Uqg-Ke-dmA" id="4dW-eb-DJn"/>
                     </connections>
                 </viewController>
@@ -215,6 +216,7 @@
                     <navigationItem key="navigationItem" id="kyM-Tc-WUk"/>
                     <connections>
                         <outlet property="leaderboardTableView" destination="QCG-yh-p9k" id="BXD-yO-X26"/>
+                        <outlet property="picker" destination="FOw-F3-aMr" id="dKm-8c-fpe"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aRU-CY-yAi" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -251,7 +253,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0ho-Il-Kg3">
-                                <rect key="frame" x="350" y="88" width="44" height="31"/>
+                                <rect key="frame" x="349" y="88" width="45" height="31"/>
                                 <buttonConfiguration key="configuration" style="plain" image="power" catalog="system">
                                     <color key="baseForegroundColor" red="1" green="0.1857388616" blue="0.57339501380000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </buttonConfiguration>
@@ -298,6 +300,10 @@
                         <imageReference key="selectedImage" image="homekit" catalog="system" symbolScale="large"/>
                     </tabBarItem>
                     <navigationItem key="navigationItem" id="DZh-5t-a5I"/>
+                    <connections>
+                        <outlet property="leaderboardButton" destination="nyP-sv-tsc" id="YI6-Nu-15j"/>
+                        <outlet property="sudokusButton" destination="Ttz-qz-735" id="fKQ-5K-38i"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xqC-jc-hLc" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
