@@ -10,8 +10,12 @@ import FirebaseAuth
 
 class MenuViewController: ViewController {
 
+    @IBOutlet weak var sudokusButton: UIButton!
+    @IBOutlet weak var leaderboardButton: UIButton!
     override func viewDidLoad() {
         super.viewDidLoad()
+        sudokusButton.layer.cornerRadius = 10
+        leaderboardButton.layer.cornerRadius = 10
 
         // Do any additional setup after loading the view.
     }

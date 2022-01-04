@@ -16,12 +16,14 @@ class LeaderboardViewController: UIViewController {
     let pickerOptions: [String] = ["All", "Easy", "Medium", "Hard"]
     
     @IBOutlet weak var leaderboardTableView: UITableView!
+    @IBOutlet weak var picker: UIPickerView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "Leaderboard"
         dataSource.loadLeaderboard()
         dataSource.delegate = self
+        picker.layer.cornerRadius = 10
     }
     
     func secondsToString(seconds: Int) -> String {
