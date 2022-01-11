@@ -241,7 +241,18 @@ extension SolveSudokuViewController: DataSourceDelegate {
         if (relationDataAdded && leaderboardDataAdded) {
             let uiTabBarController = self.navigationController?.viewControllers.filter({ vc in
                 vc is UITabBarController
-        })[0] as! UITabBarController
+            })[0] as! UITabBarController
+            
+            let sudokusViewController = uiTabBarController.viewControllers?.filter({ vc in
+                vc is SudokusViewController
+            })[0] as! SudokusViewController
+            let leaderboardViewController = uiTabBarController.viewControllers?.filter({ vc in
+                vc is LeaderboardViewController
+            })[0] as! LeaderboardViewController
+
+            // Update data of the views
+            sudokusViewController.viewDidLoad()
+            leaderboardViewController.viewDidLoad()
             self.navigationController?.popToViewController(uiTabBarController, animated: true)
         }
     }
