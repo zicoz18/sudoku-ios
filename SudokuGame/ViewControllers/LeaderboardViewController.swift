@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Firebase
 
 class LeaderboardViewController: UIViewController {
     
@@ -42,6 +43,17 @@ class LeaderboardViewController: UIViewController {
             }
         }
         leaderboardTableView.reloadData()
+    }
+    
+    @IBAction func logout(_ sender: Any) {
+        do {
+            try FirebaseAuth.Auth.auth().signOut()
+            print("signed out")
+            let loginViewController = self.storyboard?.instantiateViewController(withIdentifier: "SignIn") as! LoginViewController
+            self.navigationController?.pushViewController(loginViewController, animated: true)
+        } catch {
+            print("Could not sign out")
+        }
     }
 }
 
