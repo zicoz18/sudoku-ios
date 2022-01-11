@@ -70,9 +70,17 @@ class DataSource {
         }
     }
     
-    func loadSudokus() {
+    func loadAllSudokus() {
+        let difLevels = ["easy", "medium", "hard"]
+        difLevels.forEach { dif in
+            self.loadSudokus(dif: dif)
+        }
+    }
+    
+    
+    func loadSudokus(dif: String) {
         let urlSession = URLSession.shared
-        if let url = URL(string: "\(baseURL)/updatedSudokusTrial.json") {
+        if let url = URL(string: "\(baseURL)/\(dif)Sudokus.json") {
             var urlRequest = URLRequest(url: url)
             urlRequest.httpMethod = "GET"
             urlRequest.addValue("application/json", forHTTPHeaderField: "Content-Type")
@@ -84,7 +92,7 @@ class DataSource {
                     for (_, value) in sudokusData.sudokus {
                         sudokuArray.append(value)
                     }
-                    self.Sudokus = sudokuArray
+                    self.Sudokus.append(contentsOf: sudokuArray)
                     DispatchQueue.main.async {
                         self.delegate?.sudokusLoaded()
                     }
