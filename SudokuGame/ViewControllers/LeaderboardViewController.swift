@@ -24,7 +24,7 @@ class LeaderboardViewController: UIViewController {
         self.title = "Leaderboard"
         dataSource.loadLeaderboard()
         dataSource.delegate = self
-        picker.layer.cornerRadius = 10
+        picker?.layer.cornerRadius = 10
     }
     
     func secondsToString(seconds: Int) -> String {
@@ -108,7 +108,7 @@ extension LeaderboardViewController: DataSourceDelegate {
     func leaderboardLoaded() {
         items = dataSource.getLeaderboardItems()
         filteredItems = items
-        leaderboardTableView.reloadData()
+        leaderboardTableView?.reloadData()
     }
     
     func relationsLoaded() {}

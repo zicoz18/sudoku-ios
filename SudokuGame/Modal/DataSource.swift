@@ -71,6 +71,7 @@ class DataSource {
     }
     
     func loadAllSudokus() {
+        self.Sudokus = []
         let difLevels = ["easy", "medium", "hard"]
         difLevels.forEach { dif in
             self.loadSudokus(dif: dif)
