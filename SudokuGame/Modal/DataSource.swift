@@ -47,7 +47,7 @@ class DataSource {
     
     func loadLeaderboard() {
         let urlSession = URLSession.shared
-        if let url = URL(string: "\(baseURL)/updatedLeaderboard.json") {
+        if let url = URL(string: "\(baseURL)/leaderboard.json") {
             var urlRequest = URLRequest(url: url)
             urlRequest.httpMethod = "GET"
             urlRequest.addValue("application/json", forHTTPHeaderField: "Content-Type")
@@ -59,7 +59,7 @@ class DataSource {
                     for (_, value) in leaderboardData.leaderboards {
                         leaderboardArray.append(value)
                     }
-                    leaderboardArray.sort(by: { $0.Score < $1.Score })
+                    leaderboardArray.sort(by: { $0.score < $1.score })
                     self.Leaderboard = leaderboardArray
                     DispatchQueue.main.async {
                         self.delegate?.leaderboardLoaded()
@@ -104,7 +104,7 @@ class DataSource {
     
     func loadUserSudokuRelations() {
         let urlSession = URLSession.shared
-        if let url = URL(string: "\(baseURL)/updatedRelations.json") {
+        if let url = URL(string: "\(baseURL)/relation.json") {
             var urlRequest = URLRequest(url: url)
             urlRequest.httpMethod = "GET"
             urlRequest.addValue("application/json", forHTTPHeaderField: "Content-Type")
@@ -128,7 +128,7 @@ class DataSource {
     
     func postUserSudokuRelationData(relationData: UserSudokuRelation) {
         let urlSession = URLSession.shared
-        if let url = URL(string: "\(baseURL)/updatedRelations/relations.json") {
+        if let url = URL(string: "\(baseURL)/relation/relations.json") {
             var urlRequest = URLRequest(url: url)
             urlRequest.httpMethod = "POST"
             urlRequest.addValue("application/json", forHTTPHeaderField: "Content-Type")
@@ -144,10 +144,10 @@ class DataSource {
             dataTask.resume()
         }
     }
-    
+    // yazılan data'ların yerini değiştir. Görselleri güncelledikten sonra sudoku'lardaki çözlümüşmü kontrolünü kaldırıp direk ordan data ekle
     func postLeaderboardData(leaderboardItemData: LeaderboardItem) {
         let urlSession = URLSession.shared
-        if let url = URL(string: "\(baseURL)/updatedLeaderboard/leaderboards.json") {
+        if let url = URL(string: "\(baseURL)/leaderboard/leaderboards.json") {
             var urlRequest = URLRequest(url: url)
             urlRequest.httpMethod = "POST"
             urlRequest.addValue("application/json", forHTTPHeaderField: "Content-Type")

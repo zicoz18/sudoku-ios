@@ -97,7 +97,7 @@ class SolveSudokuViewController: UIViewController {
     func addLeaderboardData() {
         if let userEmail = FirebaseAuth.Auth.auth().currentUser?.email {
             if let diff  = self.sudokuDifficulty {
-                let leaderboardItem = LeaderboardItem(Id: 1, Name: userEmail, Score: self.seconds, difficulty: diff)
+                let leaderboardItem = LeaderboardItem(name: userEmail, score: self.seconds, difficulty: diff)
                 dataSource.postLeaderboardData(leaderboardItemData: leaderboardItem)
             }
         }

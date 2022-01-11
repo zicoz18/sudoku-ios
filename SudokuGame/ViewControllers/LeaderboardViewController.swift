@@ -97,8 +97,8 @@ extension LeaderboardViewController: UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: "singleUser", for: indexPath) as! UserTableViewCell
         let item = filteredItems[indexPath.row]
         cell.rankLabel.text = "\(indexPath.row + 1)-)"
-        cell.nameLabel.text = item.Name
-        cell.scoreLabel.text = secondsToString(seconds: item.Score)
+        cell.nameLabel.text = item.name
+        cell.scoreLabel.text = secondsToString(seconds: item.score)
         return cell
     }
 }
