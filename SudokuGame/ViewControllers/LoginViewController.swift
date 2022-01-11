@@ -63,10 +63,7 @@ class LoginViewController: ViewController {
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let sudokusViewController = storyboard?.instantiateViewController(withIdentifier: "SudokusView") as! SudokusViewController
-        if var navigationController = (UIApplication.shared.keyWindow?.rootViewController as? UINavigationController) {
-            navigationController.viewControllers[0] = sudokusViewController
-        }
+        
     }
     
     override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {

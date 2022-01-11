@@ -96,7 +96,7 @@
                                 </connections>
                             </pickerView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iLv-5l-PLR">
-                                <rect key="frame" x="350" y="53" width="44" height="31"/>
+                                <rect key="frame" x="350" y="88" width="44" height="31"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" image="power" catalog="system">
                                     <color key="baseForegroundColor" red="1" green="0.1857388616" blue="0.57339501380000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -112,7 +112,7 @@
                             <constraint firstItem="Yo5-eB-xjh" firstAttribute="trailing" secondItem="iLv-5l-PLR" secondAttribute="trailing" constant="20" id="Dek-BX-b1T"/>
                             <constraint firstItem="Uqg-Ke-dmA" firstAttribute="top" secondItem="CPm-Pf-ffF" secondAttribute="bottom" constant="30" id="Laa-i8-B2f"/>
                             <constraint firstItem="CPm-Pf-ffF" firstAttribute="centerX" secondItem="Yo5-eB-xjh" secondAttribute="centerX" id="PhL-EF-2VH"/>
-                            <constraint firstItem="Yo5-eB-xjh" firstAttribute="top" secondItem="iLv-5l-PLR" secondAttribute="top" constant="35" id="fAj-dd-MYx"/>
+                            <constraint firstItem="Yo5-eB-xjh" firstAttribute="top" secondItem="iLv-5l-PLR" secondAttribute="top" id="fAj-dd-MYx"/>
                             <constraint firstItem="Yo5-eB-xjh" firstAttribute="trailing" secondItem="Uqg-Ke-dmA" secondAttribute="trailing" constant="20" id="hza-fo-4hi"/>
                             <constraint firstItem="Yo5-eB-xjh" firstAttribute="bottom" secondItem="Uqg-Ke-dmA" secondAttribute="bottom" constant="20" id="lCp-6F-Prl"/>
                             <constraint firstItem="CPm-Pf-ffF" firstAttribute="top" secondItem="Yo5-eB-xjh" secondAttribute="top" constant="40" id="pC8-jR-ty8"/>
@@ -210,7 +210,7 @@
                                 </connections>
                             </pickerView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="reQ-2h-nYf">
-                                <rect key="frame" x="350" y="53" width="44" height="31"/>
+                                <rect key="frame" x="350" y="88" width="44" height="31"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" image="power" catalog="system">
                                     <color key="baseForegroundColor" red="1" green="0.1857388616" blue="0.57339501380000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -225,7 +225,7 @@
                         <constraints>
                             <constraint firstItem="Ihm-IS-xbz" firstAttribute="trailing" secondItem="QCG-yh-p9k" secondAttribute="trailing" constant="20" id="0zx-3X-z09"/>
                             <constraint firstItem="QCG-yh-p9k" firstAttribute="top" secondItem="FOw-F3-aMr" secondAttribute="bottom" constant="30" id="DzM-oM-XbF"/>
-                            <constraint firstItem="Ihm-IS-xbz" firstAttribute="top" secondItem="reQ-2h-nYf" secondAttribute="top" constant="35" id="GEk-0w-7u9"/>
+                            <constraint firstItem="Ihm-IS-xbz" firstAttribute="top" secondItem="reQ-2h-nYf" secondAttribute="top" id="GEk-0w-7u9"/>
                             <constraint firstItem="Ihm-IS-xbz" firstAttribute="trailing" secondItem="reQ-2h-nYf" secondAttribute="trailing" constant="20" id="Hj8-j7-KkD"/>
                             <constraint firstItem="FOw-F3-aMr" firstAttribute="centerX" secondItem="Ihm-IS-xbz" secondAttribute="centerX" id="fKD-hN-syU"/>
                             <constraint firstItem="FOw-F3-aMr" firstAttribute="top" secondItem="Ihm-IS-xbz" secondAttribute="top" constant="40" id="vi4-ad-amd"/>
