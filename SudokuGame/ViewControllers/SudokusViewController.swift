@@ -27,7 +27,7 @@ class SudokusViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "Sudokus"
-        dataSource.loadSudokus()
+        dataSource.loadAllSudokus()
         dataSource.loadUserSudokuRelations()
         dataSource.delegate = self
         picker.layer.cornerRadius = 10
