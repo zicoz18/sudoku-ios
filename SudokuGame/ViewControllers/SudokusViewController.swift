@@ -31,7 +31,10 @@ class SudokusViewController: UIViewController {
         dataSource.loadUserSudokuRelations()
         dataSource.delegate = self
         picker.layer.cornerRadius = 10
-        self.navigationController?.viewControllers.removeFirst()
+        let navViews = self.navigationController?.viewControllers.filter({ vc in
+            (vc is LoginViewController) != true
+        }) as! [ViewController]
+        self.navigationController?.viewControllers = navViews
     }
     
     // MARK: - Navigation
