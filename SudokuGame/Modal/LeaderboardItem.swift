@@ -8,8 +8,7 @@
 import Foundation
 
 struct LeaderboardItem: Decodable, Encodable {
-    let Id: Int
-    let Name: String
-    let Score: Int
+    let name: String
+    let score: Int
     let difficulty: String
 }
